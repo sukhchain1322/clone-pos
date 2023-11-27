@@ -1,0 +1,225 @@
+.printpaidbill {
+  color: #ffffff;
+  background: none;
+  border: 0px solid #ffffff;
+  background-color: #ffffff23;
+  backdrop-filter: blur(2px);
+  margin-left: 10vw;
+}
+
+.delete-table-btn {
+  position: relative;
+  left: -700px;
+}
+
+.modal-footer .btn {
+  margin-left: 20px;
+  padding: 15px;
+}
+.billing,
+.billing2 {
+  transition: background-color 0.3s ease;
+}
+
+#showorder {
+  position: relative;
+  left: -600px;
+}
+
+.waiters {
+  width: 200px;
+  height: 150px;
+  margin: 10px;
+}
+
+#Modal3Content {
+  width: 60vw;
+  height: 80vh;
+  position: relative;
+  /* right: 200px; */
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  padding: 40px;
+}
+
+.modal-buttons-wrapper {
+  display: flex;
+  margin-left: auto;
+}
+
+#Modal2Content,
+#Modal4Content {
+  width: 80vw;
+  min-height: 80vh;
+  position: relative;
+  right: 200px;
+  font-size: 30px;
+  padding: 40px;
+}
+.billing:hover {
+  background-color: #e26e6e;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.billing2 {
+  color: #c7bbbb;
+}
+
+#addtable {
+  color: #ffffff;
+  background: none;
+  border: 0px solid #ffffff;
+  background-color: #ffffff23;
+  backdrop-filter: blur(2px);
+  margin-left: 3px;
+}
+
+.categories {
+  width: 150px;
+  height: 70px;
+  margin: 0px 15px;
+}
+
+.small-mid-container {
+  min-height: 270px;
+}
+
+.modal-content {
+  background: none;
+  background-color: #7474744b;
+  backdrop-filter: blur(15px);
+  color: #ffffff;
+  border-radius: 40px;
+}
+
+.navbar {
+  height: 200px;
+  align-items: flex-end;
+}
+.sukh {
+  height: 100px;
+  margin: 20px;
+  font-size: 40px;
+}
+
+.cash {
+  width: 20%;
+  height: 10vh;
+  margin: 20px;
+}
+
+.cash2 {
+  margin-top: 100px;
+  padding: 0px 200px;
+}
+
+#cashinput {
+  color: none;
+  background-color: none;
+}
+
+.navbar .navbar-brand h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Permanent Marker", cursive;
+  font-weight: 100;
+  font-size: 100px;
+}
+
+.left-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  /* max-width: 60vw; */
+}
+
+.left-container .row {
+  flex-wrap: wrap;
+}
+
+.left-container .menu {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+  vertical-align: auto;
+}
+
+.page {
+  min-height: 100vh;
+  max-width: 100vw;
+
+  background-size: cover;
+
+  background-image: url(https://wallpaperaccess.com/full/1385491.jpg);
+}
+
+.modal-body {
+  height: 80vh; /* change the height to your desired value */
+  overflow-y: auto; /* add this property to enable scrolling if necessary */
+}
+
+.menuitems {
+  width: 200px;
+  margin: 5px 10px;
+}
+
+.menu .btn-outline-secondary:hover {
+  height: 150px;
+  width: 200px;
+  background: none;
+  border: 0px solid #ffffff;
+  background-color: #ffffff62;
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  /* font-size: 30px; */
+}
+.menu .btn-outline-secondary {
+  height: 150px;
+  color: #ffffff;
+  width: 200px;
+  background: none;
+  border: 0px solid #ffffff;
+  background-color: #ffffff27;
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+.right-container,
+#total {
+  font-size: 18px;
+}
+
+.bill-container {
+  margin-right: 10%;
+}
+
+.bill-container,
+.bill-container2 {
+  width: 40%;
+}
+
+.bill-container-parent {
+  display: flex;
+  align-items: flex-start;
+}
+
+.cancel-button {
+  margin: 0px 30px;
+  height: 50px;
+  width: 100px;
+}
+
+.save-button {
+  height: 50px;
+  width: 100px;
+}

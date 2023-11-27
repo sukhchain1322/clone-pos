@@ -1,0 +1,276 @@
+<!-- app.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POS</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <!-- =================================================== -->
+      <!-- As a heading -->
+      <nav class="nav2">
+        <div class="container-fluid">
+          <button
+            class="btn btn-outline-secondary printpaidbill"
+            type="button"
+            onclick="Printpaidbill()"
+          >
+            Print paid bill
+          </button>
+          <button
+            class="btn btn-outline-secondary printpaidbill"
+            type="button"
+            onclick="printTotalSale()"
+          >
+            Print Total Sale
+          </button>
+
+          <button
+            class="btn btn-outline-secondary printpaidbill"
+            onclick="printAllBills()"
+            type="button"
+          >
+            Print All Bills
+          </button>
+
+          <button
+            class="btn btn-outline-secondary printpaidbill"
+            id="deleteAllDataBtn"
+            onclick="deleteAllData()"
+            type="button"
+          >
+            Delete data
+          </button>
+        </div>
+      </nav>
+
+      <!-- =================================================== -->
+      <nav class="navbar">
+        <div class="container-fluid d-flex align-items-center flex-column">
+          <span class="navbar-brand mb-0 h1"> <h1>Babe Da Dhaba</h1></span>
+        </div>
+      </nav>
+
+      <!-- =================================================== -->
+
+      <div class="left-container d-flex align-items-center flex-column">
+        <div class="input-group mb-3 w-25">
+          <input type="number" id="inputTable" class="form-control" />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary"
+              id="addtable"
+              type="button"
+            >
+              Add Table
+            </button>
+          </div>
+        </div>
+        <div class="row"></div>
+      </div>
+      <!-- =================================================== -->
+
+      <div
+        class="modal fade bd-example-modal-lg"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+        id="largeModal"
+      >
+        <div class="modal-dialog modal-lg" style="max-width: 1400px">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Add items to the bill
+              </h5>
+              <div type="button" class="close" data-dismiss="modal">___</div>
+            </div>
+
+            <div class="modal-body">
+              <!-- =================================================== -->
+              <!-- =================================================== -->
+
+              <div class="mid-container"></div>
+              <hr />
+              <div class="small-mid-container"></div>
+              <div class="right-container">
+                <div class="bill-container-parent">
+                  <div class="bill-container">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Ullam, at iure? Beatae adipisci aliquam optio placeat
+                    aperiam, magnam asperiores, vero quidem quis iste eligendi
+                    atque, distinctio nesciunt hic voluptatibus! Consectetur
+                    fuga doloribus, quas aperiam animi quae perferendis quaerat
+                    facilis dolores architecto quos ullam reprehenderit
+                    inventore perspiciatis quis? Cum quos quia minus quidem
+                    distinctio dolorem dolores, iusto officia debitis eaque, non
+                    ab optio sint repellendus ipsam harum a facilis incidunt
+                    magnam reprehenderit minima ex reiciendis? Eos eligendi
+                    similique nisi, temporibus itaque vel soluta eius
+                    repellendus officia impedit consequuntur quam aspernatur
+                    magnam odio veritatis distinctio harum perferendis aperiam
+                    qui atque dolor voluptatum.
+                  </div>
+
+                  <div class="bill-container2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ratione illum, nisi enim earum, placeat dolorum praesentium
+                    eius minus qui aliquam corporis culpa voluptates cumque sint
+                    quaerat? Ipsam error minima perferendis.
+                  </div>
+                </div>
+              </div>
+
+              <!-- =================================================== -->
+              <!-- =================================================== -->
+            </div>
+            <div class="modal-footer">
+              <div class="pay-container">
+                <div id="total"></div>
+
+                <button
+                  type="button"
+                  class="btn btn-danger delete-table-btn"
+                  onclick="deleteTable()"
+                >
+                  Delete Table
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  onclick="showOrder()"
+                  id="showorder"
+                >
+                  Edit Order
+                </button>
+                <button
+                  type="button"
+                  id="additems"
+                  class="btn btn-warning"
+                  onclick="printKOT()"
+                >
+                  KOT
+                </button>
+
+                <button type="button" id="pay" class="btn btn-primary">
+                  Receipt
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  onclick="paidButton()"
+                >
+                  Paid
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- //////////////////         NEW MODAL FOR EDITING ORDERS       ///////////////// -->
+
+      <div
+        class="modal fade bd-example-modal-lg"
+        tabindex="-1"
+        role="dialog"
+        id="Modal2"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" id="Modal2Content">
+            <div id="editOrder"></div>
+            <div class="modal-buttons-wrapper">
+              <!-- <button
+                type="button"
+                class="btn btn-warning cancel-button"
+                onclick="cancelbutton()"
+              >
+                Cancel
+              </button> -->
+              <button
+                type="button"
+                class="btn btn-success save-button"
+                onclick="closeModal2()"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- //////////////////         NEW MODAL FOR EDITING ORDERS       ///////////////// -->
+
+      <!-- //////////////////         NEW MODAL FOR WAITERS      ///////////////// -->
+
+      <div
+        class="modal fade bd-example-modal-lg"
+        tabindex="-1"
+        role="dialog"
+        id="Modal3"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog container modal-lg">
+          <div class="modal-content" id="Modal3Content"></div>
+        </div>
+      </div>
+
+      <!-- //////////////////         NEW MODAL FOR WAITERS      ///////////////// -->
+
+      <!-- //////////////////         NEW MODAL FOR  cash balance    ///////////////// -->
+
+      <div
+        class="modal fade bd-example-modal-lg"
+        tabindex="-1"
+        role="dialog"
+        id="Modal4"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog container modal-lg">
+          <div class="modal-content" id="Modal4Content">
+            <!-- /////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- /////////////////////////////////////////////////////////////////////////////////// -->
+          </div>
+        </div>
+      </div>
+
+      <!-- //////////////////         NEW MODAL FOR cash balance      ///////////////// -->
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
