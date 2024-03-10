@@ -589,7 +589,7 @@ let menu = [
   {
     name: "makki di roti",
     id: "82",
-    price: 20,
+    price: 25,
     img: "https://i0.wp.com/www.simpleglutenfreekitchen.com/wp-content/uploads/2020/01/makki-ki-roti-1.jpg?resize=606%2C800&ssl=1",
     category: "roti & naan",
   },
@@ -670,6 +670,33 @@ let menu = [
     price: 10,
     img: "",
     category: "breakfast",
+  },
+];
+
+let waiters = [
+  {
+    name: "waiter 1",
+    id: "1",
+  },
+  {
+    name: "waiter 2",
+    id: "2",
+  },
+  {
+    name: "waiter 3",
+    id: "3",
+  },
+  {
+    name: "waiter 4",
+    id: "4",
+  },
+  {
+    name: "waiter 5",
+    id: "5",
+  },
+  {
+    name: "waiter 6",
+    id: "6",
   },
 ];
 
