@@ -488,14 +488,14 @@ let menu = [
     category: "Non Veg (half plate)",
   },
   {
-    name: "masla chicken",
+    name: "masala chicken",
     id: "69",
     price: 500,
     img: "https://bellyfull.net/wp-content/uploads/2021/05/Chicken-Tikka-Masala-blog-768x1024.jpg",
     category: "Non Veg",
   },
   {
-    name: "half masla chicken",
+    name: "half masala chicken",
     id: "70",
     price: 280,
     img: "https://bellyfull.net/wp-content/uploads/2021/05/Chicken-Tikka-Masala-blog-768x1024.jpg",
@@ -539,14 +539,14 @@ let menu = [
   {
     name: "lemon chicken",
     id: "76",
-    price: 520,
+    price: 550,
     img: "https://therecipecritic.com/wp-content/uploads/2023/07/chinese_lemon_chicken-1-640x853.jpg",
     category: "Non Veg",
   },
   {
     name: "half lemon chicken",
     id: "77",
-    price: 320,
+    price: 300,
     img: "https://therecipecritic.com/wp-content/uploads/2023/07/chinese_lemon_chicken-1-640x853.jpg",
     category: "Non Veg (half plate)",
   },
