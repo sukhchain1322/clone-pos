@@ -956,7 +956,7 @@ function addRoti(item) {
   const itemInfoDiv = document.createElement("div");
   itemInfoDiv.setAttribute("id", `bill${itemCopy.id}`);
   itemInfoDiv.setAttribute("class", "billing");
-  itemInfoDiv.innerText = count + " " + itemCopy.name + " - $" + itemCopy.price;
+  itemInfoDiv.innerText = count + " " + itemCopy.name + " - " + itemCopy.price;
   billContainer.appendChild(itemInfoDiv);
 
   // Add the item copy to the order for the selected table
@@ -979,7 +979,7 @@ function addToBill(item) {
   const itemInfoDiv = document.createElement("div");
   itemInfoDiv.setAttribute("id", `bill${item.id}`);
   itemInfoDiv.setAttribute("class", "billing");
-  itemInfoDiv.innerText = item.name + " - $" + item.price;
+  itemInfoDiv.innerText = item.name + " - " + item.price;
   billContainer.appendChild(itemInfoDiv);
 
   // Add the item to the order for the selected table
@@ -1282,7 +1282,7 @@ function generateReceiptContent(paidBill) {
   receiptContent += "</ul>";
 
   // Add the total amount to the receipt content
-  receiptContent += "<h2>Total: $" + paidBill.totalAmount + "</h2>";
+  receiptContent += "<h2>Total: " + paidBill.totalAmount + "</h2>";
 
   return receiptContent;
 }
@@ -1311,9 +1311,9 @@ function showOrder() {
 
     if (order[i].count) {
       itemInfoDiv.innerText +=
-        order[i].count + " " + order[i].name + " - $" + order[i].price;
+        order[i].count + " " + order[i].name + " - " + order[i].price;
     } else {
-      itemInfoDiv.innerText += order[i].name + " - $" + order[i].price;
+      itemInfoDiv.innerText += order[i].name + " - " + order[i].price;
     }
     Modal2Content.appendChild(itemInfoDiv);
   }
@@ -1352,9 +1352,9 @@ function generateBill(tableId) {
 
     if (order[i].count) {
       itemInfoDiv.innerText +=
-        order[i].count + " " + order[i].name + " - $" + order[i].price;
+        order[i].count + " " + order[i].name + " - " + order[i].price;
     } else {
-      itemInfoDiv.innerText += order[i].name + " - $" + order[i].price;
+      itemInfoDiv.innerText += order[i].name + " - " + order[i].price;
     }
 
     billContainer.appendChild(itemInfoDiv);
@@ -1372,9 +1372,9 @@ function generateBill(tableId) {
 
     if (order[i].count) {
       itemInfoDiv.innerText +=
-        order[i].count + " " + order[i].name + " - $" + order[i].price;
+        order[i].count + " " + order[i].name + " - " + order[i].price;
     } else {
-      itemInfoDiv.innerText += order[i].name + " - $" + order[i].price;
+      itemInfoDiv.innerText += order[i].name + " - " + order[i].price;
     }
     billContainer2.appendChild(itemInfoDiv);
     total += order[i].price;
