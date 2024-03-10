@@ -1405,17 +1405,9 @@ function printKOT() {
         "<li>" +
         tables[selectedTable].order[i].count +
         " " +
-        tables[selectedTable].order[i].name +
-        " - $" +
-        tables[selectedTable].order[i].price +
-        "</li>";
+        tables[selectedTable].order[i].name;
     } else {
-      receiptContent +=
-        "<li>" +
-        tables[selectedTable].order[i].name +
-        " - $" +
-        tables[selectedTable].order[i].price +
-        "</li>";
+      receiptContent += "<li>" + tables[selectedTable].order[i].name;
     }
   }
 
@@ -1501,14 +1493,14 @@ function printReceipt() {
         tables[selectedTable].finalorder[i].count +
         " " +
         tables[selectedTable].finalorder[i].name +
-        " - $" +
+        " - " +
         tables[selectedTable].finalorder[i].price +
         "</li>";
     } else {
       receiptContent +=
         "<li>" +
         tables[selectedTable].finalorder[i].name +
-        " - $" +
+        " - " +
         tables[selectedTable].finalorder[i].price +
         "</li>";
     }
@@ -1517,7 +1509,7 @@ function printReceipt() {
   receiptContent += "</ul>";
 
   // Add the total amount to the receipt content
-  receiptContent += "<h2>Total: $" + tables[selectedTable].total + "</h2>";
+  receiptContent += "<h2>Total: " + tables[selectedTable].total + "</h2>";
 
   // Open a new window and write the receipt content to it
   let printWindow = window.open("", "Print", "height=600,width=800");
