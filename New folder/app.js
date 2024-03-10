@@ -613,63 +613,70 @@ let menu = [
     id: "85",
     price: 80,
     img: "https://bigoven-res.cloudinary.com/image/upload/h_320,w_320,c_fill/plain-white-rice-f7391e.jpg",
-    category: "rice",
+    category: "Other",
   },
   {
     name: "zeera rice",
     id: "86",
     price: 120,
     img: "https://www.whiskaffair.com/wp-content/uploads/2021/06/Jeera-Rice-2-1-1.jpg",
-    category: "rice",
+    category: "Other",
   },
   {
     name: "veg fried rice",
     id: "87",
     price: 150,
     img: "https://www.vegrecipesofindia.com/wp-content/uploads/2020/12/fried-rice-recipe-1152x1536.jpg",
-    category: "rice",
+    category: "Other",
   },
   {
     name: "paneer fried rice",
     id: "88",
     price: 170,
     img: "https://www.vegrecipesofindia.com/wp-content/uploads/2015/09/paneer-fried-rice-recipe.jpg",
-    category: "rice",
+    category: "Other",
   },
   {
     name: "veg biryani",
     id: "89",
     price: 170,
     img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/biryani-recipe-1-1024x1536.jpg",
-    category: "rice",
+    category: "Other",
   },
   {
     name: "mutter pulao",
     id: "91",
     price: 150,
     img: "",
-    category: "rice",
+    category: "Other",
   },
   {
     name: "half dahi",
     id: "92",
     price: 40,
     img: "https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/curd-recipe.jpg",
-    category: "breakfast",
+    category: "Other",
   },
   {
     name: "half cream salad",
     id: "93",
     price: 50,
     img: "http://www.pakistanichefrecipes.com/wp-content/uploads/2018/07/Vegetable-Cream-Salad.jpg",
-    category: "salad",
+    category: "Other",
   },
   {
     name: "extra butter",
     id: "94",
     price: 10,
     img: "",
-    category: "breakfast",
+    category: "Other",
+  },
+  {
+    name: "Water",
+    id: "94",
+    price: 20,
+    img: "",
+    category: "Other",
   },
 ];
 
@@ -723,7 +730,7 @@ let categories = [
   "sides",
   "chicken",
   "Roti",
-  "Rice",
+  "Other",
 ];
 
 let tables = {};
@@ -1026,9 +1033,9 @@ function showMenu(category) {
     Roti();
   }
 
-  if (category == "Rice") {
+  if (category == "Other") {
     smallMidContainer.innerHTML = `<div>${category}: </div>`;
-    Rice();
+    Other();
   }
 }
 
@@ -1156,9 +1163,9 @@ function Roti() {
   }
 }
 
-function Rice() {
+function Other() {
   /////////// loop 7
-  for (let i = 85; i < 89; i++) {
+  for (let i = 85; i < menu.length; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
