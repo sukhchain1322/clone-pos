@@ -675,28 +675,44 @@ let menu = [
 
 let waiters = [
   {
-    name: "waiter 1",
+    name: "PACKING",
     id: "1",
   },
   {
-    name: "waiter 2",
+    name: "Sobin",
     id: "2",
   },
   {
-    name: "waiter 3",
+    name: "Shaam",
     id: "3",
   },
   {
-    name: "waiter 4",
+    name: "Jassi",
     id: "4",
   },
   {
-    name: "waiter 5",
+    name: "VK",
     id: "5",
   },
   {
-    name: "waiter 6",
+    name: "Kishan",
     id: "6",
+  },
+  {
+    name: "Dheeraj",
+    id: "7",
+  },
+  {
+    name: "Ram avtar",
+    id: "8",
+  },
+  {
+    name: "Pandari",
+    id: "9",
+  },
+  {
+    name: "Surjit",
+    id: "10",
   },
 ];
 
