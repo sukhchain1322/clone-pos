@@ -644,7 +644,7 @@ let menu = [
     category: "Other",
   },
   {
-    name: "mutter pulao",
+    name: "Mutter Pulao",
     id: "91",
     price: 150,
     img: "",
