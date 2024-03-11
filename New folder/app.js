@@ -680,32 +680,82 @@ let menu = [
   },
 
   //////////////////////////////  new items ////////////////////////
+  {
+    name: "Soda",
+    id: "96",
+    price: 20,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "chicken gravy",
+    id: "97",
+    price: 150,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "veg gravy",
+    id: "98",
+    price: 120,
+    img: "",
+    category: "Other",
+  },
 
   {
-    name: "Water",
-    id: "95",
+    name: "punjabi chicken",
+    id: "99",
+    price: 500,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "half punjabi chicken",
+    id: "100",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "steam chicken",
+    id: "101",
+    price: 500,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "half steam chicken",
+    id: "102",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
+
+  {
+    name: "ITEM 10",
+    id: "103",
+    price: 10,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "ITEM 20",
+    id: "104",
     price: 20,
     img: "",
     category: "Other",
   },
   {
-    name: "Water",
-    id: "95",
-    price: 20,
+    name: "ITEM 40",
+    id: "105",
+    price: 40,
     img: "",
     category: "Other",
   },
   {
-    name: "Water",
-    id: "95",
-    price: 20,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Water",
-    id: "95",
-    price: 20,
+    name: "ITEM 95",
+    id: "106",
+    price: 95,
     img: "",
     category: "Other",
   },
@@ -1687,7 +1737,7 @@ function printKOT() {
   // receiptContent += "<h2>KOT AMOUNT: $" + tables[selectedTable].total + "</h2>";
 
   // Open a new window and write the receipt content to it
-  let printWindow = window.open("", "Print");
+  let printWindow = window.open("", "Print", "height=600,width=800");
   printWindow.document.write(receiptContent);
 
   // Print the receipt
