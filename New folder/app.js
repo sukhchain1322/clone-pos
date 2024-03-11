@@ -673,7 +673,38 @@ let menu = [
   },
   {
     name: "Water",
-    id: "94",
+    id: "95",
+    price: 20,
+    img: "",
+    category: "Other",
+  },
+
+  //////////////////////////////  new items ////////////////////////
+
+  {
+    name: "Water",
+    id: "95",
+    price: 20,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Water",
+    id: "95",
+    price: 20,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Water",
+    id: "95",
+    price: 20,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Water",
+    id: "95",
     price: 20,
     img: "",
     category: "Other",
@@ -1656,7 +1687,7 @@ function printKOT() {
   // receiptContent += "<h2>KOT AMOUNT: $" + tables[selectedTable].total + "</h2>";
 
   // Open a new window and write the receipt content to it
-  let printWindow = window.open("", "Print", "height=600,width=800");
+  let printWindow = window.open("", "Print");
   printWindow.document.write(receiptContent);
 
   // Print the receipt
