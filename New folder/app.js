@@ -1558,14 +1558,14 @@ function clearbill2() {
 }
 
 function printAllBills() {
+  let receiptContent;
   for (let i = 0; i < paidBills.length; i++) {
     const paidBill = paidBills[i];
-    const receiptContent = generateReceiptContent(paidBill);
-
-    // Open a new window and write the receipt content to it
-    let printWindow = window.open("", "Print", "height=600,width=800");
-    printWindow.document.write(receiptContent);
+    receiptContent += generateReceiptContent(paidBill);
   }
+  // Open a new window and write the receipt content to it
+  let printWindow = window.open("", "Print", "height=600,width=800");
+  printWindow.document.write(receiptContent);
   // Print the receipt
   printWindow.print();
   printWindow.close();
@@ -1963,12 +1963,12 @@ document.getElementById("pay").addEventListener("click", function () {
   }
 });
 
-var myModal = new bootstrap.Modal(
-  document.getElementById("exampleModalCenter")
-);
-document.getElementById("openModal").addEventListener("click", function () {
-  myModal.show();
-});
+// var myModal = new bootstrap.Modal(
+//   document.getElementById("exampleModalCenter")
+// );
+// document.getElementById("openModal").addEventListener("click", function () {
+//   myModal.show();
+// });
 
 function printTotalSale() {
   let sum = 0;
@@ -1988,4 +1988,71 @@ function printTotalSale() {
   printWindow.document.close();
   printWindow.focus();
   printWindow.print();
+}
+
+const MenuItems = {};
+
+function countItemsWithZero(menu) {
+  for (const item of menu) {
+    MenuItems[item.name] = { count: 0 };
+  }
+  return MenuItems;
+}
+
+countItemsWithZero(menu);
+
+// function updateItemCount() {
+//   // console.log(paidBills[1].items[0].name);
+//   for (const x of paidBills) {
+//     for (const y of x.items) {
+//       // console.log(y.name); // chicken fry
+//       MenuItems[y.name].count++;
+//     }
+//   }
+//   console.log(MenuItems);
+// }
+
+function updateItemCount(paidBills) {
+  paidBills.forEach((bill) => {
+    bill.items.forEach((item) => {
+      MenuItems[item.name] = MenuItems[item.name] || { count: 0 };
+      MenuItems[item.name].count++;
+    });
+  });
+
+  const receiptContent =
+    `Item Receipt\n\nItem Name\tCount\n-------------------------\n` +
+    Object.entries(MenuItems)
+      .map(([name, { count }]) => `${name}\t${count}`)
+      .join("\n");
+
+  console.log(receiptContent);
+
+  if (typeof window !== "undefined") {
+    const printWindow = window.open("", "PRINT", "height=600,width=800");
+    printWindow.document.write(
+      `
+      <html>
+      <head>
+        <title>Item Receipt</title>
+      </head>
+      <body>
+        <h2>Item Receipt</h2>
+        <table>
+          <tr><th>Item Name</th><th>Count</th></tr>` +
+        Object.entries(MenuItems)
+          .map(
+            ([name, { count }]) => `<tr><td>${name}</td><td>${count}</td></tr>`
+          )
+          .join("") +
+        `</table>
+      </body>
+      </html>`
+    );
+    countItemsWithZero(menu);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+  }
 }
