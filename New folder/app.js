@@ -1829,16 +1829,41 @@ function printReceipt() {
 
   receiptContent += "</ul>";
 
+  // tax system///////////////////////////
+
+  let tax = document.getElementById("tax").value;
+  let discount = document.getElementById("discount").value;
+  if (tax > 0) {
+    tables[selectedTable].total += (tables[selectedTable].total * tax) / 100;
+    receiptContent +=
+      "<p>Tax: " + (tables[selectedTable].total * tax) / 100 + "%<p>";
+  }
+
+  if (discount > 0) {
+    tables[selectedTable].total -= discount;
+    receiptContent += "<p>discount: " + discount + "<p>";
+  }
+
+  // round off
+
+  if (tables[selectedTable].total > 100) {
+    tables[selectedTable].total -= tables[selectedTable].total % 10;
+  }
+
   // Add the total amount to the receipt content
+
   receiptContent += "<h2>Total: " + tables[selectedTable].total + "</h2>";
 
   // Open a new window and write the receipt content to it
-  let printWindow = window.open("", "Print", "height=600,width=800");
+  let printWindow = window.open("", "Print", "height=auto,width=800");
   printWindow.document.write(receiptContent);
 
   // Print the receipt
   printWindow.print();
   printWindow.close();
+
+  tax = "";
+  document.getElementById("discount").value = null;
 }
 
 document.getElementById("pay").addEventListener("click", function () {
