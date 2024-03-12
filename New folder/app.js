@@ -1716,30 +1716,29 @@ function generateBill(tableId) {
 function printKOT() {
   const activeTable = selectedTable;
   const tableNumber = activeTable.replace("table", "");
-  let receiptContent =
-    "<h1>Babe da dhaba - Table " +
-    tableNumber +
-    "   By " +
-    tables[selectedTable].waiter +
-    "</h1>";
-
-  receiptContent += "<ul>";
+  let receiptContent = `
+  <h1 style="text-align: center; ">Babe da dhaba</h1>
+  <h2 style="text-align: center; ">Table ${tableNumber}- ${tables[selectedTable].waiter}</h2>
+  <hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">
+  <ul style="list-style: none; padding: 0; margin: 0; text-align: center; font-size:30px;">
+`;
 
   // Loop through the items in the bill container and add them to the receipt content
 
   for (let i = 0; i < tables[selectedTable].order.length; i++) {
     if (tables[selectedTable].order[i].count) {
       receiptContent +=
-        "<li>" +
+        "<li><span class='h3'>" +
         tables[selectedTable].order[i].count +
         " " +
-        tables[selectedTable].order[i].name;
+        tables[selectedTable].order[i].name +
+        "</span><li>";
     } else {
       receiptContent += "<li>" + tables[selectedTable].order[i].name;
     }
   }
 
-  receiptContent += "</ul>";
+  receiptContent += `</ul><hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">`;
 
   // receiptContent += "<h2>KOT AMOUNT: $" + tables[selectedTable].total + "</h2>";
 
@@ -1803,14 +1802,90 @@ function printKOT() {
   closeModal();
 }
 
+// function printReceipt() {
+//   const activeTable = selectedTable;
+//   const itemsToMove = tables[activeTable].order.splice(0);
+//   tables[activeTable].finalorder.push(...itemsToMove);
+//   const tableNumber = activeTable.replace("table", "");
+//   let receiptContent = "<h1>Babe da dhaba - Table " + tableNumber + "</h1>";
+
+//   receiptContent += "<ul>";
+
+//   // Loop through the items in the bill container and add them to the receipt content
+
+//   for (let i = 0; i < tables[selectedTable].finalorder.length; i++) {
+//     if (tables[selectedTable].finalorder[i].count) {
+//       receiptContent +=
+//         "<li>" +
+//         tables[selectedTable].finalorder[i].count +
+//         " " +
+//         tables[selectedTable].finalorder[i].name +
+//         " - " +
+//         tables[selectedTable].finalorder[i].price +
+//         "</li>";
+//     } else {
+//       receiptContent +=
+//         "<li>" +
+//         tables[selectedTable].finalorder[i].name +
+//         " - " +
+//         tables[selectedTable].finalorder[i].price +
+//         "</li>";
+//     }
+//   }
+
+//   receiptContent += "</ul>";
+
+//   // tax system///////////////////////////
+
+//   let tax = document.getElementById("tax").value;
+//   let discount = document.getElementById("discount").value;
+//   if (tax > 0) {
+//     tables[selectedTable].total += (tables[selectedTable].total * tax) / 100;
+//     receiptContent +=
+//       `<p>Tax (${tax}) :` + (tables[selectedTable].total * tax) / 100 + "<p>";
+//   }
+
+//   if (discount > 0) {
+//     tables[selectedTable].total -= discount;
+//     receiptContent += "<p>discount: " + discount + "<p>";
+//   }
+
+//   // round off
+//   tables[selectedTable].total -= tables[selectedTable].total % 5;
+
+//   // Add the total amount to the receipt content
+
+//   receiptContent += "<h2>Total: " + tables[selectedTable].total + "</h2>";
+
+//   // Open a new window and write the receipt content to it
+//   let printWindow = window.open("", "Print", "height=auto,width=800");
+//   printWindow.document.write(receiptContent);
+
+//   // Print the receipt
+
+//   printWindow.print();
+
+//   printWindow.resizeTo(500, 500);
+//   console.log("window height");
+//   console.log(printWindow.innerHeight);
+//   printWindow.close();
+
+//   // reset tax and discount
+//   document.getElementById("tax").value = null;
+//   document.getElementById("discount").value = null;
+// }
+
 function printReceipt() {
   const activeTable = selectedTable;
   const itemsToMove = tables[activeTable].order.splice(0);
   tables[activeTable].finalorder.push(...itemsToMove);
   const tableNumber = activeTable.replace("table", "");
-  let receiptContent = "<h1>Babe da dhaba - Table " + tableNumber + "</h1>";
-
-  receiptContent += "<ul>";
+  let receiptContent = `
+    <h1 style="text-align: center; ">Babe da dhaba</h1>
+    <h2 style="text-align: center; ">Table ${tableNumber}</h2>
+    <hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">
+    <ul style="list-style: none; padding: 0; margin: 0;">
+`;
 
   // Loop through the items in the bill container and add them to the receipt content
 
@@ -1834,7 +1909,7 @@ function printReceipt() {
     }
   }
 
-  receiptContent += "</ul>";
+  receiptContent += `<hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">`;
 
   // tax system///////////////////////////
 
@@ -1843,7 +1918,7 @@ function printReceipt() {
   if (tax > 0) {
     tables[selectedTable].total += (tables[selectedTable].total * tax) / 100;
     receiptContent +=
-      "<p>Tax: " + (tables[selectedTable].total * tax) / 100 + "%<p>";
+      `<p>Tax (${tax}%) :` + (tables[selectedTable].total * tax) / 100 + "<p>";
   }
 
   if (discount > 0) {
@@ -1856,8 +1931,11 @@ function printReceipt() {
 
   // Add the total amount to the receipt content
 
-  receiptContent += "<h2>Total: " + tables[selectedTable].total + "</h2>";
-
+  receiptContent += `
+  <div style="text-align: center; margin-top: 20px;">
+    <h2>Total:${tables[selectedTable].total}</h2>
+  </div>
+`;
   // Open a new window and write the receipt content to it
   let printWindow = window.open("", "Print", "height=auto,width=800");
   printWindow.document.write(receiptContent);
