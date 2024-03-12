@@ -759,6 +759,13 @@ let menu = [
     img: "",
     category: "Other",
   },
+  {
+    name: "Gudd vali chaah",
+    id: "107",
+    price: 25,
+    img: "",
+    category: "Other",
+  },
 ];
 
 let waiters = [
@@ -1845,10 +1852,7 @@ function printReceipt() {
   }
 
   // round off
-
-  if (tables[selectedTable].total > 100) {
-    tables[selectedTable].total -= tables[selectedTable].total % 10;
-  }
+  tables[selectedTable].total -= tables[selectedTable].total % 5;
 
   // Add the total amount to the receipt content
 
@@ -1859,10 +1863,16 @@ function printReceipt() {
   printWindow.document.write(receiptContent);
 
   // Print the receipt
+
   printWindow.print();
+
+  printWindow.resizeTo(500, 500);
+  console.log("window height");
+  console.log(printWindow.innerHeight);
   printWindow.close();
 
-  tax = "";
+  // reset tax and discount
+  document.getElementById("tax").value = null;
   document.getElementById("discount").value = null;
 }
 
