@@ -766,6 +766,56 @@ let menu = [
     img: "",
     category: "Other",
   },
+
+  {
+    name: "Rajma",
+    id: "108",
+    price: 150,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Masala papd",
+    id: "109",
+    price: 50,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "plane papad",
+    id: "110",
+    price: 20,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Mutter methi",
+    id: "111",
+    price: 180,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Mushroom masala",
+    id: "112",
+    price: 220,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "Rara chicken",
+    id: "113",
+    price: 500,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "half Rara chicken",
+    id: "114",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
 ];
 
 let waiters = [
@@ -1927,7 +1977,8 @@ function printReceipt() {
   }
 
   // round off
-  tables[selectedTable].total -= tables[selectedTable].total % 5;
+  tables[selectedTable].total =
+    Math.round(tables[selectedTable].total / 10) * 10;
 
   // Add the total amount to the receipt content
 
