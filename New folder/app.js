@@ -816,6 +816,13 @@ let menu = [
     img: "",
     category: "Other",
   },
+  {
+    name: "ITEM 60",
+    id: "115",
+    price: 60,
+    img: "",
+    category: "Other",
+  },
 ];
 
 let waiters = [
