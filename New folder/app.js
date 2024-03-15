@@ -816,13 +816,6 @@ let menu = [
     img: "",
     category: "Other",
   },
-  {
-    name: "ITEM 60",
-    id: "115",
-    price: 60,
-    img: "",
-    category: "Other",
-  },
 ];
 
 let waiters = [
@@ -1326,6 +1319,27 @@ function Other() {
 
     document.querySelector(".small-mid-container").appendChild(div);
   }
+
+  let div = document.createElement("div");
+  div.classList.add("btn", "btn-success", "menuitems");
+
+  div.setAttribute("id", "item.id");
+
+  div.innerText = "+";
+
+  div.addEventListener("click", function () {
+    let newitem = {
+      name: prompt("NAME"),
+      id: "116",
+      price: Number(prompt("PRICE")),
+      img: "",
+      category: "Other",
+    };
+
+    addToBill(newitem);
+  });
+
+  document.querySelector(".small-mid-container").appendChild(div);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
