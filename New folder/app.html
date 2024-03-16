@@ -60,16 +60,15 @@
             onclick="deleteAllData()"
             type="button"
           >
-            Delete data
+            Delete data & Update Stock
           </button>
 
           <button
             class="btn btn-outline-secondary printpaidbill"
-            id="itemCountBtn"
-            onclick="updateItemCount(paidBills)"
+            onclick="showModal5()"
             type="button"
           >
-            Item count
+            STOCK
           </button>
         </div>
       </nav>
@@ -236,6 +235,38 @@
       </div>
 
       <!-- //////////////////         NEW MODAL FOR WAITERS      ///////////////// -->
+
+      <!-- //////////////////         NEW MODAL FOR STOCK      ///////////////// -->
+
+      <div
+        class="modal fade bd-example-modal-lg"
+        tabindex="-1"
+        role="dialog"
+        id="Modal5"
+        aria-labelledby="myLargeModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog container modal-lg">
+          <div class="modal-content" id="Modal5Content">
+            <div style="width: 90vw; padding: 100px">
+              <button class="btn btn-warning p-25" onclick="updateItemCount()">
+                Reset
+              </button>
+              <table id="stockTable">
+                <tr>
+                  <th>Item</th>
+                  <th>Total stock</th>
+                  <th>Count</th>
+                  <th>Balance</th>
+                </tr>
+                <!-- Rows will be added here dynamically -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- //////////////////         NEW MODAL FOR STOCK      ///////////////// -->
 
       <!-- //////////////////         NEW MODAL FOR  cash balance    ///////////////// -->
 

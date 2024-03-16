@@ -946,6 +946,18 @@ function closeModal4() {
   modalInstance.hide();
 }
 
+function showModal5() {
+  const modal = document.getElementById("Modal5");
+  const modalInstance = new bootstrap.Modal(modal);
+  modalInstance.show();
+}
+
+function closeModal5() {
+  const modal = document.getElementById("Modal5");
+  const modalInstance = bootstrap.Modal.getInstance(modal);
+  modalInstance.hide();
+}
+
 function retrieveTablesFromLocalStorage() {
   let storedTables = JSON.parse(localStorage.getItem("tables"));
 
@@ -1012,6 +1024,8 @@ function deleteAllData() {
   let askUser = prompt("type DELETE for deleting all data");
 
   if (askUser == "delete") {
+    PrintItemCountOnPaper(paidBills);
+    printStock();
     // Clear the variables
     tables = {};
     paidBills = [];
@@ -1031,6 +1045,8 @@ function deleteAllData() {
 
     // Reset the selectedTable variable
     selectedTable = null;
+
+    // updateItemCount();
 
     alert("Data deleted successfully !!");
   } else {
@@ -2062,29 +2078,95 @@ function printTotalSale() {
   printWindow.print();
 }
 
-const MenuItems = {};
+let MenuItems = {};
 
 function countItemsWithZero(menu) {
-  for (const item of menu) {
-    MenuItems[item.name] = { count: 0 };
+  for (let i = 94; i < menu.length; i++) {
+    MenuItems[menu[i].name] = { count: 0, instock: 0, balance: 0 };
   }
+
+  localStorage.setItem("menuItems", JSON.stringify(MenuItems));
   return MenuItems;
 }
 
-countItemsWithZero(menu);
+function updateItemCount() {
+  for (const key in MenuItems) {
+    let item = MenuItems[key];
+    // console.log(item.count + ":: " + item.instock);
+    item.instock = item.balance;
+    item.count = 0;
+    item.balance = 0;
+  }
+  localStorage.setItem("menuItems", JSON.stringify(MenuItems));
+  refreshCount(MenuItems);
+}
 
-// function updateItemCount() {
-//   // console.log(paidBills[1].items[0].name);
-//   for (const x of paidBills) {
-//     for (const y of x.items) {
-//       // console.log(y.name); // chicken fry
-//       MenuItems[y.name].count++;
-//     }
-//   }
-//   console.log(MenuItems);
-// }
+function refreshCount(MenuItems) {
+  // Assuming MenuItems is already populated correctly
+  const stockTable = document.getElementById("stockTable");
 
-function updateItemCount(paidBills) {
+  // Clear existing rows, except for the header
+  while (stockTable.rows.length > 1) {
+    stockTable.deleteRow(1);
+  }
+  // Iterate through MenuItems and add a row for each
+  for (const itemName in MenuItems) {
+    const item = MenuItems[itemName];
+    const row = stockTable.insertRow(-1); // Add a new row at the end of the table
+
+    // Insert cells (`<td>`) and text for each column
+    const cellItem = row.insertCell(0);
+    cellItem.innerHTML = `<span class="btn btn-light stockbtns">${itemName}</span>`; // Item name with Bootstrap button class
+
+    const cellTotalStock = row.insertCell(1);
+    cellTotalStock.textContent = item.instock; // Total stock
+
+    const cellCount = row.insertCell(2);
+    cellCount.textContent = item.count; // Count
+
+    const cellBalance = row.insertCell(3);
+    item.balance = item.instock - item.count;
+    cellBalance.textContent = item.balance; // Balance
+
+    cellItem.addEventListener("click", () => Addstock(item));
+  }
+  localStorage.setItem("menuItems", JSON.stringify(MenuItems));
+}
+
+function Addstock(item) {
+  let quantity = Number(prompt("enter the quantity"));
+  item.instock += quantity;
+
+  refreshCount(MenuItems);
+  localStorage.setItem("menuItems", JSON.stringify(MenuItems));
+}
+
+function retrieveMenuItems() {
+  let storedMenuItems = JSON.parse(localStorage.getItem("menuItems"));
+  if (storedMenuItems) {
+    MenuItems = storedMenuItems;
+  }
+}
+
+retrieveMenuItems();
+
+function printStock() {
+  paidBills.forEach((bill) => {
+    bill.items.forEach((item) => {
+      console.log(item.id);
+      if (item.id > 94 && item.id < 106) {
+        MenuItems[item.name] = MenuItems[item.name] || { count: 0 };
+        MenuItems[item.name].count++;
+      }
+    });
+  });
+
+  refreshCount(MenuItems);
+}
+
+refreshCount(MenuItems);
+
+function PrintItemCountOnPaper(paidBills) {
   paidBills.forEach((bill) => {
     bill.items.forEach((item) => {
       MenuItems[item.name] = MenuItems[item.name] || { count: 0 };

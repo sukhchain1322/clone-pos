@@ -7,6 +7,17 @@
   margin-left: 7vw;
 }
 
+th,
+td {
+  width: 25%; /* Set each table cell to 25% of the table's width */
+  text-align: left; /* Adjust text alignment as needed */
+}
+
+.stockbtns {
+  width: 90%;
+  margin-right: 20px;
+}
+
 .delete-table-btn {
   position: relative;
   left: -600px;
