@@ -879,6 +879,8 @@ let KOT = [];
 
 let allTotals = [];
 
+let paytmbills = [];
+
 let numberoftables = 0;
 
 let addTableBtn = document.getElementById("addtable");
@@ -997,6 +999,7 @@ function retrieveTablesFromLocalStorage() {
     // Update paidBills and allTotals arrays from local storage
     let storedPaidBills = JSON.parse(localStorage.getItem("paidBills"));
     let storedAllTotals = JSON.parse(localStorage.getItem("allTotals"));
+    let storedpaytmbills = JSON.parse(localStorage.getItem("paytm"));
 
     if (storedPaidBills) {
       paidBills = storedPaidBills;
@@ -1004,6 +1007,10 @@ function retrieveTablesFromLocalStorage() {
 
     if (storedAllTotals) {
       allTotals = storedAllTotals;
+    }
+
+    if (storedpaytmbills) {
+      paytmbills = storedpaytmbills;
     }
 
     // console.log("All tables below");
@@ -1024,18 +1031,20 @@ function deleteAllData() {
   let askUser = prompt("type DELETE for deleting all data");
 
   if (askUser == "delete") {
-    PrintItemCountOnPaper(paidBills);
-    printStock();
+    // PrintItemCountOnPaper(paidBills);
+    // printStock();
     // Clear the variables
     tables = {};
     paidBills = [];
     allTotals = [];
+    paytmbills = [];
     numberoftables = 0;
 
     // Clear the local storage
     localStorage.removeItem("tables");
     localStorage.removeItem("paidBills");
     localStorage.removeItem("allTotals");
+    localStorage.removeItem("paytm");
 
     // Remove all table elements from the DOM
     const tableElements = document.querySelectorAll(".tablebtn");
@@ -1554,7 +1563,7 @@ function createCashInput() {
   // Create the skip button element
   const skipButton = document.createElement("div");
   skipButton.classList.add("btn", "btn-warning", "cash");
-  skipButton.textContent = "Skip";
+  skipButton.textContent = "PAYTM";
   skipButton.addEventListener("click", skipcash);
   cashInputSection.appendChild(skipButton);
   // Append the cash input section to the modal content
@@ -1562,6 +1571,9 @@ function createCashInput() {
 }
 
 function skipcash() {
+  paytmbills.push(tables[selectedTable].total);
+  console.log(paytmbills);
+
   clearbill2();
   closeModal4();
 }
@@ -1640,6 +1652,7 @@ function clearbill2() {
   localStorage.setItem("tables", JSON.stringify(tables));
   localStorage.setItem("paidBills", JSON.stringify(paidBills));
   localStorage.setItem("allTotals", JSON.stringify(allTotals));
+  localStorage.setItem("paytm", JSON.stringify(paytmbills));
 
   closeModal();
 }
@@ -2033,8 +2046,7 @@ function printReceipt() {
   printWindow.print();
 
   printWindow.resizeTo(500, 500);
-  console.log("window height");
-  console.log(printWindow.innerHeight);
+
   printWindow.close();
 
   // reset tax and discount
@@ -2061,13 +2073,27 @@ document.getElementById("pay").addEventListener("click", function () {
 function printTotalSale() {
   let sum = 0;
   let count = 1;
-  let output = "<h1> BABE DA DHABA SALE </h1>";
+  let output =
+    "<h1> BABE DA DHABA SALE </h1>" + "<br>" + "ALL BILLS: " + "<br>" + "<br>";
   for (const total of allTotals) {
     output += `bill  ${count}:  ` + total + "<br>";
     sum += total;
     count++;
   }
+  output += "<br>" + "<br>" + "PAYTM/ONLINE BILLS" + "<br>" + "<br>";
+  count = 1;
+  let sum2 = 0;
+  for (const total of paytmbills) {
+    output += `bill  ${count}:  ` + total + "<br>";
+    sum2 += total;
+    count++;
+  }
+
+  output += "<br>" + "PAYTM/ONLINE: " + sum2 + "<br>" + "<br>";
+  output += "CASH: " + (sum - sum2) + "<br>" + "<br>";
+
   output += "Total sale for the day: " + sum;
+
   let printWindow = window.open("", "", "height=500,width=500");
   printWindow.document.write("<html><head><title>Total Sale</title>");
   printWindow.document.write("</head><body >");
