@@ -1133,13 +1133,22 @@ function createWaiters() {
   }
 }
 createWaiters();
-
+let phoneNumber;
 function selectWaiter(waiter) {
-  tables[selectedTable].waiter = waiter.name;
-  document.getElementById(selectedTable).innerText =
-    "Table " + tables[selectedTable].tableId + "\n" + waiter.name;
-  closeModal3();
-  generateBill(selectedTable);
+  if (waiter.name == "PACKING") {
+    phoneNumber = prompt("Enter mobile number");
+    tables[selectedTable].waiter = phoneNumber;
+    document.getElementById(selectedTable).innerText =
+      "Table " + tables[selectedTable].tableId + "\n" + phoneNumber;
+    closeModal3();
+    generateBill(selectedTable);
+  } else {
+    tables[selectedTable].waiter = waiter.name;
+    document.getElementById(selectedTable).innerText =
+      "Table " + tables[selectedTable].tableId + "\n" + waiter.name;
+    closeModal3();
+    generateBill(selectedTable);
+  }
 }
 
 function createMenu() {
