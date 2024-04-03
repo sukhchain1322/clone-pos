@@ -2245,3 +2245,5 @@ function PrintItemCountOnPaper(paidBills) {
     printWindow.close();
   }
 }
+
+console.log("hello ,welcome to dhaba");
