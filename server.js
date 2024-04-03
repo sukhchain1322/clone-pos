@@ -50,16 +50,3 @@ app.post("/submit-final-order", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-app.listen(port, async () => {
-  // Use async here because fetchGitHubFile is an async function
-  console.log(`Server is running on http://localhost:${port}`);
-
-  try {
-    // Optionally fetch file content from GitHub at server startup
-    const githubContent = await fetchGitHubFile();
-    console.log(githubContent); // Do something with the fetched content
-  } catch (error) {
-    console.error("Failed to fetch from GitHub on startup:", error);
-  }
-});
