@@ -1872,26 +1872,26 @@ function printKOT() {
   };
 
   // Send payload to server
-  // fetch("/submit-final-order", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(payload),
-  // })
-  //   .then((response) => {
-  //     if (response.ok) {
-  //       console.log("Final order sent successfully");
-  //       // Additional success handling code here
-  //     } else {
-  //       console.error("Error sending final order");
-  //       // Additional error handling code here
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //     // Additional exception handling code here
-  //   });
+  fetch("/submit-final-order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Final order sent successfully");
+        // Additional success handling code here
+      } else {
+        console.error("Error sending final order");
+        // Additional error handling code here
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Additional exception handling code here
+    });
   //////////////////////////////////////////////////
   //////////////////////////////////////////////////
 
