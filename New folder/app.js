@@ -824,7 +824,7 @@ let waiters = [
     id: "1",
   },
   {
-    name: "Sobin",
+    name: "padam",
     id: "2",
   },
   {
@@ -848,7 +848,7 @@ let waiters = [
     id: "7",
   },
   {
-    name: "Ram avtar",
+    name: "shaib",
     id: "8",
   },
   {
