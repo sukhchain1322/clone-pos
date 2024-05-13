@@ -12,10 +12,10 @@ const MONGODB_URI =
   "mongodb+srv://sukhchain03:KADImajra@cluster0.ursn5kl.mongodb.net/KOT";
 
 // Connect to MongoDB
-// mongoose
-//   .connect(MONGODB_URI)
-//   .then(() => console.log("MongoDB connected successfully"))
-//   .catch((err) => console.error("MongoDB connection error:", err));
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // Update Schema to include orderID
 const finalOrderSchema = new mongoose.Schema({
