@@ -26,12 +26,9 @@ const MONGODB_URI =
 // });
 // const FinalOrder = mongoose.model("orders", finalOrderSchema);
 
-// app.use(bodyParser.json());
-// app.use(express.static(path.join(__dirname, "New folder")));
 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "New folder", "app.html"));
-// });
+
+
 
 // // Handle POST requests for final orders
 // app.post("/submit-final-order", async (req, res) => {
@@ -46,6 +43,13 @@ const MONGODB_URI =
 //     res.status(500).send("Error processing final order.");
 //   }
 // });
+
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "New folder")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "New folder", "app.html"));
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
