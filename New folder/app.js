@@ -816,6 +816,21 @@ let menu = [
     img: "",
     category: "Other",
   },
+
+  {
+    name: "half ice",
+    id: "115",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "ice",
+    id: "116",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
 ];
 
 let waiters = [
@@ -1186,7 +1201,7 @@ function showMenu(category) {
   }
 
   if (category == "parantha") {
-    smallMidContainer.innerHTML = `<div>${category}: </div>`;
+    smallMidContainer.innerHTML = `<div> EXTRAS : </div>`;
     parantha();
   }
 
@@ -1237,7 +1252,7 @@ function veggies() {
 function beverages() {
   /////////////////// loop 2
 
-  for (let i = 20; i < 25; i++) {
+  for (let i = 20; i < 30; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1257,7 +1272,7 @@ function beverages() {
 
 function parantha() {
   ////////////// loop 3
-  for (let i = 25; i < 30; i++) {
+  for (let i = 114; i < menu.length; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1273,6 +1288,26 @@ function parantha() {
 
     document.querySelector(".small-mid-container").appendChild(div);
   }
+  let div = document.createElement("div");
+  div.classList.add("btn", "btn-success", "menuitems");
+
+  div.setAttribute("id", "item.id");
+
+  div.innerText = "+";
+
+  div.addEventListener("click", function () {
+    let newitem = {
+      name:"HALF SABZI",
+      id: "199",
+      price: Number(prompt("PRICE")),
+      img: "",
+      category: "Other",
+    };
+
+    addToBill(newitem);
+  });
+
+  document.querySelector(".small-mid-container").appendChild(div);
 }
 
 function sides() {
@@ -1337,7 +1372,7 @@ function Roti() {
 
 function Other() {
   /////////// loop 7
-  for (let i = 85; i < menu.length; i++) {
+  for (let i = 85; i < 114; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
