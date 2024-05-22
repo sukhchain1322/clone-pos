@@ -1061,6 +1061,7 @@ function deleteAllData() {
     localStorage.removeItem("allTotals");
     localStorage.removeItem("paytm");
 
+    
     // Remove all table elements from the DOM
     const tableElements = document.querySelectorAll(".tablebtn");
     tableElements.forEach((element) => {
