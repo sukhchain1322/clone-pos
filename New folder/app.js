@@ -1900,12 +1900,12 @@ function printKOT() {
   const randomOrderID = Math.floor(1000 + Math.random() * 9000).toString();
 
   // Prepare payload for server with the generated order ID
-  const payload = {
-    tableNumber: tableNumber,
-    finalOrder: tables[activeTable].order,
-    waiter: tables[activeTable].waiter,
-    orderID: randomOrderID, // Add the generated order ID to the payload
-  };
+  // const payload = {
+  //   tableNumber: tableNumber,
+  //   finalOrder: tables[activeTable].order,
+  //   waiter: tables[activeTable].waiter,
+  //   orderID: randomOrderID, // Add the generated order ID to the payload
+  // };
 
   // Send payload to server
   // fetch("/submit-final-order", {
