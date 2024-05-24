@@ -820,14 +820,21 @@ let menu = [
   {
     name: "half ice",
     id: "115",
-    price: 280,
+    price: 30,
     img: "",
     category: "Other",
   },
   {
     name: "ice",
     id: "116",
-    price: 280,
+    price: 50,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "chana bhatura",
+    id: "117",
+    price: 150,
     img: "",
     category: "Other",
   },
