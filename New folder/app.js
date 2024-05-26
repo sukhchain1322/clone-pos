@@ -838,6 +838,20 @@ let menu = [
     img: "",
     category: "Other",
   },
+  {
+    name: "masala chicken",
+    id: "118",
+    price: 500,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "half masala chicken",
+    id: "119",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
 ];
 
 let waiters = [
