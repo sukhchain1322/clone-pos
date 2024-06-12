@@ -12,37 +12,33 @@ const MONGODB_URI =
   "mongodb+srv://sukhchain03:KADImajra@cluster0.ursn5kl.mongodb.net/KOT";
 
 // Connect to MongoDB
-// mongoose
-//   .connect(MONGODB_URI)
-//   .then(() => console.log("MongoDB connected successfully"))
-//   .catch((err) => console.error("MongoDB connection error:", err));
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // Update Schema to include orderID
-// const finalOrderSchema = new mongoose.Schema({
-//   tableNumber: String,
-//   finalOrder: Array,
-//   waiter: String,
-//   orderID: String, // New field for the order ID
-// });
-// const FinalOrder = mongoose.model("orders", finalOrderSchema);
+const finalOrderSchema = new mongoose.Schema({
+  tableNumber: String,
+  finalOrder: Array,
+  waiter: String,
+  orderID: String, // New field for the order ID
+});
+const FinalOrder = mongoose.model("orders", finalOrderSchema);
 
+// Handle POST requests for final orders
+app.post("/submit-final-order", async (req, res) => {
+  const newFinalOrder = new FinalOrder(req.body);
 
-
-
-
-// // Handle POST requests for final orders
-// app.post("/submit-final-order", async (req, res) => {
-//   const newFinalOrder = new FinalOrder(req.body);
-
-//   try {
-//     await newFinalOrder.save();
-//     console.log("Final order saved successfully");
-//     res.status(200).send("Final order received and processed");
-//   } catch (err) {
-//     console.error("Error saving final order:", err);
-//     res.status(500).send("Error processing final order.");
-//   }
-// });
+  try {
+    await newFinalOrder.save();
+    console.log("Final order saved successfully");
+    res.status(200).send("Final order received and processed");
+  } catch (err) {
+    console.error("Error saving final order:", err);
+    res.status(500).send("Error processing final order.");
+  }
+});
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "New folder")));

@@ -1082,7 +1082,6 @@ function deleteAllData() {
     localStorage.removeItem("allTotals");
     localStorage.removeItem("paytm");
 
-    
     // Remove all table elements from the DOM
     const tableElements = document.querySelectorAll(".tablebtn");
     tableElements.forEach((element) => {
@@ -1319,7 +1318,7 @@ function parantha() {
 
   div.addEventListener("click", function () {
     let newitem = {
-      name:"HALF SABZI",
+      name: "HALF SABZI",
       id: "199",
       price: Number(prompt("PRICE")),
       img: "",
@@ -1921,34 +1920,34 @@ function printKOT() {
   const randomOrderID = Math.floor(1000 + Math.random() * 9000).toString();
 
   // Prepare payload for server with the generated order ID
-  // const payload = {
-  //   tableNumber: tableNumber,
-  //   finalOrder: tables[activeTable].order,
-  //   waiter: tables[activeTable].waiter,
-  //   orderID: randomOrderID, // Add the generated order ID to the payload
-  // };
+  const payload = {
+    tableNumber: tableNumber,
+    finalOrder: tables[activeTable].order,
+    waiter: tables[activeTable].waiter,
+    orderID: randomOrderID, // Add the generated order ID to the payload
+  };
 
   // Send payload to server
-  // fetch("/submit-final-order", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(payload),
-  // })
-  //   .then((response) => {
-  //     if (response.ok) {
-  //       console.log("Final order sent successfully");
-  //       // Additional success handling code here
-  //     } else {
-  //       console.error("Error sending final order");
-  //       // Additional error handling code here
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //     // Additional exception handling code here
-  //   });
+  fetch("/submit-final-order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("Final order sent successfully");
+        // Additional success handling code here
+      } else {
+        console.error("Error sending final order");
+        // Additional error handling code here
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Additional exception handling code here
+    });
   //////////////////////////////////////////////////
   //////////////////////////////////////////////////
 
@@ -1967,79 +1966,6 @@ function printKOT() {
 
   closeModal();
 }
-
-// function printReceipt() {
-//   const activeTable = selectedTable;
-//   const itemsToMove = tables[activeTable].order.splice(0);
-//   tables[activeTable].finalorder.push(...itemsToMove);
-//   const tableNumber = activeTable.replace("table", "");
-//   let receiptContent = "<h1>Babe da dhaba - Table " + tableNumber + "</h1>";
-
-//   receiptContent += "<ul>";
-
-//   // Loop through the items in the bill container and add them to the receipt content
-
-//   for (let i = 0; i < tables[selectedTable].finalorder.length; i++) {
-//     if (tables[selectedTable].finalorder[i].count) {
-//       receiptContent +=
-//         "<li>" +
-//         tables[selectedTable].finalorder[i].count +
-//         " " +
-//         tables[selectedTable].finalorder[i].name +
-//         " - " +
-//         tables[selectedTable].finalorder[i].price +
-//         "</li>";
-//     } else {
-//       receiptContent +=
-//         "<li>" +
-//         tables[selectedTable].finalorder[i].name +
-//         " - " +
-//         tables[selectedTable].finalorder[i].price +
-//         "</li>";
-//     }
-//   }
-
-//   receiptContent += "</ul>";
-
-//   // tax system///////////////////////////
-
-//   let tax = document.getElementById("tax").value;
-//   let discount = document.getElementById("discount").value;
-//   if (tax > 0) {
-//     tables[selectedTable].total += (tables[selectedTable].total * tax) / 100;
-//     receiptContent +=
-//       `<p>Tax (${tax}) :` + (tables[selectedTable].total * tax) / 100 + "<p>";
-//   }
-
-//   if (discount > 0) {
-//     tables[selectedTable].total -= discount;
-//     receiptContent += "<p>discount: " + discount + "<p>";
-//   }
-
-//   // round off
-//   tables[selectedTable].total -= tables[selectedTable].total % 5;
-
-//   // Add the total amount to the receipt content
-
-//   receiptContent += "<h2>Total: " + tables[selectedTable].total + "</h2>";
-
-//   // Open a new window and write the receipt content to it
-//   let printWindow = window.open("", "Print", "height=auto,width=800");
-//   printWindow.document.write(receiptContent);
-
-//   // Print the receipt
-
-//   printWindow.print();
-
-//   printWindow.resizeTo(500, 500);
-//   console.log("window height");
-//   console.log(printWindow.innerHeight);
-//   printWindow.close();
-
-//   // reset tax and discount
-//   document.getElementById("tax").value = null;
-//   document.getElementById("discount").value = null;
-// }
 
 function printReceipt() {
   const activeTable = selectedTable;
@@ -2304,4 +2230,3 @@ function PrintItemCountOnPaper(paidBills) {
 }
 
 console.log("hello . dhaba");
-
