@@ -816,6 +816,42 @@ let menu = [
     img: "",
     category: "Other",
   },
+
+  {
+    name: "half ice",
+    id: "115",
+    price: 30,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "ice",
+    id: "116",
+    price: 50,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "chana bhatura",
+    id: "117",
+    price: 150,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "masala chicken",
+    id: "118",
+    price: 500,
+    img: "",
+    category: "Other",
+  },
+  {
+    name: "half masala chicken",
+    id: "119",
+    price: 280,
+    img: "",
+    category: "Other",
+  },
 ];
 
 let waiters = [
@@ -824,7 +860,7 @@ let waiters = [
     id: "1",
   },
   {
-    name: "Sobin",
+    name: "padam",
     id: "2",
   },
   {
@@ -848,7 +884,7 @@ let waiters = [
     id: "7",
   },
   {
-    name: "Ram avtar",
+    name: "shaib",
     id: "8",
   },
   {
@@ -1046,6 +1082,7 @@ function deleteAllData() {
     localStorage.removeItem("allTotals");
     localStorage.removeItem("paytm");
 
+    
     // Remove all table elements from the DOM
     const tableElements = document.querySelectorAll(".tablebtn");
     tableElements.forEach((element) => {
@@ -1186,7 +1223,7 @@ function showMenu(category) {
   }
 
   if (category == "parantha") {
-    smallMidContainer.innerHTML = `<div>${category}: </div>`;
+    smallMidContainer.innerHTML = `<div> EXTRAS : </div>`;
     parantha();
   }
 
@@ -1237,7 +1274,7 @@ function veggies() {
 function beverages() {
   /////////////////// loop 2
 
-  for (let i = 20; i < 25; i++) {
+  for (let i = 20; i < 30; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1257,7 +1294,7 @@ function beverages() {
 
 function parantha() {
   ////////////// loop 3
-  for (let i = 25; i < 30; i++) {
+  for (let i = 114; i < menu.length; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1273,6 +1310,26 @@ function parantha() {
 
     document.querySelector(".small-mid-container").appendChild(div);
   }
+  let div = document.createElement("div");
+  div.classList.add("btn", "btn-success", "menuitems");
+
+  div.setAttribute("id", "item.id");
+
+  div.innerText = "+";
+
+  div.addEventListener("click", function () {
+    let newitem = {
+      name:"HALF SABZI",
+      id: "199",
+      price: Number(prompt("PRICE")),
+      img: "",
+      category: "Other",
+    };
+
+    addToBill(newitem);
+  });
+
+  document.querySelector(".small-mid-container").appendChild(div);
 }
 
 function sides() {
@@ -1337,7 +1394,7 @@ function Roti() {
 
 function Other() {
   /////////// loop 7
-  for (let i = 85; i < menu.length; i++) {
+  for (let i = 85; i < 114; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1864,34 +1921,34 @@ function printKOT() {
   const randomOrderID = Math.floor(1000 + Math.random() * 9000).toString();
 
   // Prepare payload for server with the generated order ID
-  const payload = {
-    tableNumber: tableNumber,
-    finalOrder: tables[activeTable].order,
-    waiter: tables[activeTable].waiter,
-    orderID: randomOrderID, // Add the generated order ID to the payload
-  };
+  // const payload = {
+  //   tableNumber: tableNumber,
+  //   finalOrder: tables[activeTable].order,
+  //   waiter: tables[activeTable].waiter,
+  //   orderID: randomOrderID, // Add the generated order ID to the payload
+  // };
 
   // Send payload to server
-  fetch("/submit-final-order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  })
-    .then((response) => {
-      if (response.ok) {
-        console.log("Final order sent successfully");
-        // Additional success handling code here
-      } else {
-        console.error("Error sending final order");
-        // Additional error handling code here
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      // Additional exception handling code here
-    });
+  // fetch("/submit-final-order", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(payload),
+  // })
+  //   .then((response) => {
+  //     if (response.ok) {
+  //       console.log("Final order sent successfully");
+  //       // Additional success handling code here
+  //     } else {
+  //       console.error("Error sending final order");
+  //       // Additional error handling code here
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //     // Additional exception handling code here
+  //   });
   //////////////////////////////////////////////////
   //////////////////////////////////////////////////
 
