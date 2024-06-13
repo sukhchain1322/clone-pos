@@ -1877,19 +1877,17 @@ function generateBill(tableId) {
     "total"
   ).innerText = `total = ${tables[tableId].total}`;
 }
-
 function printKOT() {
   const activeTable = selectedTable;
   const tableNumber = activeTable.replace("table", "");
   let receiptContent = `
   <h1 style="text-align: center; ">Babe da dhaba</h1>
-  <h2 style="text-align: center; ">Table ${tableNumber}- ${tables[selectedTable].waiter}</h2>
+  <h2 style="text-align: center; ">Table ${tableNumber} - ${tables[selectedTable].waiter}</h2>
   <hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">
   <ul style="list-style: none; padding: 0; margin: 0; text-align: center; font-size:30px;">
-`;
+  `;
 
   // Loop through the items in the bill container and add them to the receipt content
-
   for (let i = 0; i < tables[selectedTable].order.length; i++) {
     if (tables[selectedTable].order[i].count) {
       receiptContent +=
@@ -1897,15 +1895,13 @@ function printKOT() {
         tables[selectedTable].order[i].count +
         " " +
         tables[selectedTable].order[i].name +
-        "</span><li>";
+        "</span></li>";
     } else {
-      receiptContent += "<li>" + tables[selectedTable].order[i].name;
+      receiptContent += "<li>" + tables[selectedTable].order[i].name + "</li>";
     }
   }
 
   receiptContent += `</ul><hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">`;
-
-  // receiptContent += "<h2>KOT AMOUNT: $" + tables[selectedTable].total + "</h2>";
 
   // Open a new window and write the receipt content to it
   let printWindow = window.open("", "Print", "height=600,width=800");
@@ -1914,8 +1910,13 @@ function printKOT() {
   // Print the receipt
   printWindow.print();
   printWindow.close();
-  //////////////////////////////////////////////////
-  //////////////////////////////////////////////////
+
+  // Check and log the contents of tables[activeTable].order
+  console.log(
+    "Order contents before creating payload:",
+    tables[activeTable].order
+  );
+
   // Generate a random 4-digit order ID
   const randomOrderID = Math.floor(1000 + Math.random() * 9000).toString();
 
@@ -1927,8 +1928,8 @@ function printKOT() {
     orderID: randomOrderID, // Add the generated order ID to the payload
   };
 
-  console.log("payload:");
-  console.log(payload);
+  // Log the payload to debug
+  console.log("Payload before sending to server:", payload);
 
   // Send payload to server
   fetch("/submit-final-order", {
@@ -1943,7 +1944,7 @@ function printKOT() {
         console.log("Final order sent successfully");
         // Additional success handling code here
       } else {
-        console.error("Error sending final order");
+        console.error("Error sending final order:", response.statusText);
         // Additional error handling code here
       }
     })
@@ -1951,17 +1952,19 @@ function printKOT() {
       console.error("Error:", error);
       // Additional exception handling code here
     });
-  //////////////////////////////////////////////////
-  //////////////////////////////////////////////////
 
   // Move the items from the order array to the finalorder array of the selected table
   const itemsToMove = tables[activeTable].order.splice(0);
+  if (!tables[activeTable].finalorder) {
+    tables[activeTable].finalorder = [];
+  }
   tables[activeTable].finalorder.push(...itemsToMove);
 
   // Remove all child elements from the bill container
   while (billContainer.firstChild) {
     billContainer.removeChild(billContainer.firstChild);
   }
+
   // Save the data to local storage
   localStorage.setItem("tables", JSON.stringify(tables));
 

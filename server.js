@@ -1,5 +1,3 @@
-//server.js
-
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -11,9 +9,16 @@ const MONGODB_URI =
   process.env.MONGODB_URI ||
   "mongodb+srv://sukhchain03:KADImajra@cluster0.ursn5kl.mongodb.net/KOT";
 
+// Middleware
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "New folder")));
+
 // Connect to MongoDB
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -24,7 +29,7 @@ const finalOrderSchema = new mongoose.Schema({
   waiter: String,
   orderID: String, // New field for the order ID
 });
-const FinalOrder = mongoose.model("orders", finalOrderSchema);
+const FinalOrder = mongoose.model("Order", finalOrderSchema);
 
 // Handle POST requests for final orders
 app.post("/submit-final-order", async (req, res) => {
@@ -40,9 +45,7 @@ app.post("/submit-final-order", async (req, res) => {
   }
 });
 
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "New folder")));
-
+// Serve the frontend
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "New folder", "app.html"));
 });
