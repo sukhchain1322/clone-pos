@@ -1927,6 +1927,9 @@ function printKOT() {
     orderID: randomOrderID, // Add the generated order ID to the payload
   };
 
+  console.log("payload:");
+  console.log(payload);
+
   // Send payload to server
   fetch("/submit-final-order", {
     method: "POST",
@@ -1961,8 +1964,6 @@ function printKOT() {
   }
   // Save the data to local storage
   localStorage.setItem("tables", JSON.stringify(tables));
-
-  console.log(tables[selectedTable]);
 
   closeModal();
 }
