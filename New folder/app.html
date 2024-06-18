@@ -29,7 +29,7 @@
     <div class="page">
       <!-- =================================================== -->
       <!-- As a heading -->
-      <nav class="nav2">
+      <!-- <nav class="nav2 bg-dark">
         <div class="container-fluid">
           <button
             class="btn btn-outline-secondary printpaidbill"
@@ -60,16 +60,38 @@
             onclick="deleteAllData()"
             type="button"
           >
-            Delete data & Update Stock
+            Reset
           </button>
-
-          <button
-            class="btn btn-outline-secondary printpaidbill"
-            onclick="showModal5()"
-            type="button"
-          >
-            STOCK
-          </button>
+        </div>
+      </nav> -->
+      <nav class="navbar navbar-expand-lg main-nav">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="Printpaidbill()"
+                >Print paid bill</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="printTotalSale()"
+                >Print Total Sale</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="printAllBills()"
+                >Print All Bills</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                id="deleteAllDataBtn"
+                onclick="deleteAllData()"
+                >Reset</a
+              >
+            </li>
+          </ul>
         </div>
       </nav>
 

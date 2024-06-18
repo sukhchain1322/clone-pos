@@ -1006,6 +1006,10 @@ function retrieveTablesFromLocalStorage() {
 
         let inputValue = table.tableId;
 
+        if (document.getElementById(`table${inputValue}`)) {
+          return;
+        }
+
         let div = document.createElement("div");
         let div2 = document.createElement("div");
 
@@ -1049,12 +1053,6 @@ function retrieveTablesFromLocalStorage() {
       paytmbills = storedpaytmbills;
     }
 
-    // console.log("All tables below");
-    // console.log(tables);
-
-    // console.log("All paid bills below");
-    // console.log(paidBills);
-
     return tables;
   } else {
     return {};
@@ -1092,10 +1090,36 @@ function deleteAllData() {
     selectedTable = null;
 
     // updateItemCount();
+    clearFetchedOrderIds();
+    deleteAllEntries();
 
     alert("Data deleted successfully !!");
   } else {
   }
+}
+
+function deleteAllEntries() {
+  fetch("/delete-all-orders", {
+    method: "DELETE",
+  })
+    .then((response) => {
+      if (response.ok) {
+        console.log("All entries deleted successfully");
+        // Optionally, you can also clear local storage or update the UI
+        localStorage.removeItem("tables");
+        localStorage.removeItem("fetchedOrderIds");
+        localStorage.removeItem("paidBills");
+        localStorage.removeItem("allTotals");
+        localStorage.removeItem("paytm");
+        // Update UI or refresh the page
+        location.reload();
+      } else {
+        console.error("Failed to delete all entries");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
 addTableBtn.addEventListener("click", function () {
@@ -1911,12 +1935,6 @@ function printKOT() {
   printWindow.print();
   printWindow.close();
 
-  // Check and log the contents of tables[activeTable].order
-  console.log(
-    "Order contents before creating payload:",
-    tables[activeTable].order
-  );
-
   // Generate a random 4-digit order ID
   const randomOrderID = Math.floor(1000 + Math.random() * 9000).toString();
 
@@ -1928,9 +1946,6 @@ function printKOT() {
     orderID: randomOrderID, // Add the generated order ID to the payload
   };
 
-  // Log the payload to debug
-  console.log("Payload before sending to server:", payload);
-
   // Send payload to server
   fetch("/submit-final-order", {
     method: "POST",
@@ -1941,7 +1956,6 @@ function printKOT() {
   })
     .then((response) => {
       if (response.ok) {
-        console.log("Final order sent successfully");
         // Additional success handling code here
       } else {
         console.error("Error sending final order:", response.statusText);
@@ -1967,6 +1981,7 @@ function printKOT() {
 
   // Save the data to local storage
   localStorage.setItem("tables", JSON.stringify(tables));
+  clearbadge(`${selectedTable}`);
 
   closeModal();
 }
@@ -2233,4 +2248,161 @@ function PrintItemCountOnPaper(paidBills) {
   }
 }
 
-console.log("hello . dhaba");
+let ordersWithPhoneNumber = [];
+
+document.addEventListener("DOMContentLoaded", function () {
+  function fetchOrdersWithPhoneNumber() {
+    // Retrieve already fetched order IDs from local storage
+    const fetchedOrderIds =
+      JSON.parse(localStorage.getItem("fetchedOrderIds")) || [];
+
+    fetch("/fetch-orders-with-phone")
+      .then((response) => response.json())
+      .then((data) => {
+        // Filter out already fetched orders
+        const newOrders = data.filter(
+          (order) => !fetchedOrderIds.includes(order._id)
+        );
+
+        if (newOrders.length > 0) {
+          // Store the fetched orders in the array
+          ordersWithPhoneNumber = newOrders;
+
+          // Update local storage with new fetched order IDs
+          const newOrderIds = newOrders.map((order) => order._id);
+          const updatedFetchedOrderIds = [...fetchedOrderIds, ...newOrderIds];
+          localStorage.setItem(
+            "fetchedOrderIds",
+            JSON.stringify(updatedFetchedOrderIds)
+          );
+
+          console.log(
+            "Fetched orders with phone numbers:",
+            ordersWithPhoneNumber
+          );
+
+          updateOrders();
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching orders:", error);
+      });
+  }
+
+  // Fetch the orders when the page loads
+  fetchOrdersWithPhoneNumber();
+
+  // Set an interval to fetch new orders every 5 seconds
+  setInterval(() => {
+    fetchOrdersWithPhoneNumber();
+
+    retrieveTablesFromLocalStorage();
+  }, 5000);
+});
+
+function updateOrders() {
+  // Process fetched orders for existing tables
+  for (const storedTable in tables) {
+    for (const fetchedTable of ordersWithPhoneNumber) {
+      if (storedTable === fetchedTable.orderID) {
+        tables[storedTable].order.push(...fetchedTable.items);
+        console.log(tables[storedTable]);
+        addBadge(storedTable, [...fetchedTable.items].length);
+      }
+    }
+  }
+
+  // Process fetched orders for new tables
+  for (const fetchedTable of ordersWithPhoneNumber) {
+    const tableKey = `table${fetchedTable.orderID.replace(/\D/g, "")}`;
+    if (!tables[tableKey]) {
+      let billtotal = 0;
+      [...fetchedTable.items].forEach((item) => (billtotal += item.price));
+
+      tables[tableKey] = {
+        tableId: fetchedTable.orderID.replace(/\D/g, ""),
+        order: [...fetchedTable.items],
+        finalorder: [],
+        total: billtotal,
+        waiter: fetchedTable.name !== "dine" ? fetchedTable.name : "Mobile",
+      };
+      // console.log(`Created new table entry: ${tableKey}`);
+      createtablebtn(
+        `${fetchedTable.orderID.replace(/\D/g, "")}`,
+        tables[`${tableKey}`].waiter
+      );
+    }
+  }
+
+  localStorage.setItem("tables", JSON.stringify(tables));
+}
+
+// function updateOrders() {
+//   for (const storedTable in tables) {
+//     for (const fetchedTable of ordersWithPhoneNumber) {
+//       if (storedTable == fetchedTable.orderID) {
+//         tables[storedTable].order.push(...fetchedTable.items);
+//         console.log(tables[storedTable]);
+//         addBadge(storedTable, [...fetchedTable.items].length);
+//       } else if (
+//         storedTable !== fetchedTable.orderID &&
+//         fetchedTable.phoneNumber === "in"
+//       ) {
+//         const tableKey = `table${fetchedTable.orderID.replace(/\D/g, "")}`;
+//         tables[tableKey] = {
+//           tableId: fetchedTable.orderID.replace(/\D/g, ""),
+//           order: [...fetchedTable.items],
+//           finalorder: [],
+//           total: 0,
+//           waiter: "NA",
+//         };
+//       }
+//     }
+//   }
+//   localStorage.setItem("tables", JSON.stringify(tables));
+// }
+
+function addBadge(tableid, count) {
+  ////////////////////////////////  badge  //////////////
+  document.getElementById(
+    `${tableid}`
+  ).innerHTML += `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="badge${tableid}" >
+${count}
+<span class="visually-hidden">unread messages</span>
+</span>`;
+}
+
+function clearbadge(tableid) {
+  var element = document.getElementById(`badge${tableid}`);
+  if (element) {
+    element.remove();
+  }
+}
+
+function clearFetchedOrderIds() {
+  localStorage.removeItem("fetchedOrderIds");
+  console.log("Cleared fetched order IDs from local storage");
+}
+function createtablebtn(inputValue, waiter) {
+  let div = document.createElement("div");
+  let div2 = document.createElement("div");
+
+  numberoftables++;
+
+  div.classList.add("btn", "btn-outline-secondary", "tablebtn");
+  div.setAttribute("id", `table${inputValue}`);
+  div.setAttribute("onClick", `generateBill('table${inputValue}')`);
+  div2.classList.add("menu");
+
+  div.innerHTML =
+    "Table " +
+    inputValue +
+    "\n" +
+    waiter +
+    `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+  Mobile
+  <span class="visually-hidden">unread messages</span>
+  </span>`;
+  div2.appendChild(div);
+  document.querySelector(".row").appendChild(div2);
+}

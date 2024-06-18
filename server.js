@@ -15,19 +15,20 @@ app.use(express.static(path.join(__dirname, "New folder")));
 
 // Connect to MongoDB
 mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGODB_URI)
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Update Schema to include orderID
+// Update Schema to include all relevant fields
 const finalOrderSchema = new mongoose.Schema({
   tableNumber: String,
   finalOrder: Array,
   waiter: String,
-  orderID: String, // New field for the order ID
+  orderID: String,
+  items: Array,
+  name: String,
+  phoneNumber: String,
+  pickup: String,
 });
 const FinalOrder = mongoose.model("Order", finalOrderSchema);
 
@@ -42,6 +43,31 @@ app.post("/submit-final-order", async (req, res) => {
   } catch (err) {
     console.error("Error saving final order:", err);
     res.status(500).send("Error processing final order.");
+  }
+});
+
+// Fetch orders with phoneNumber attribute
+app.get("/fetch-orders-with-phone", async (req, res) => {
+  try {
+    const orders = await FinalOrder.find({
+      phoneNumber: { $exists: true, $ne: null },
+    });
+    res.json(orders);
+    console.log(orders);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Endpoint to delete all entries
+app.delete("/delete-all-orders", async (req, res) => {
+  try {
+    await FinalOrder.deleteMany({});
+    console.log("All orders deleted successfully");
+    res.status(200).send("All orders deleted successfully");
+  } catch (err) {
+    console.error("Error deleting all orders:", err);
+    res.status(500).send("Error deleting all orders.");
   }
 });
 
