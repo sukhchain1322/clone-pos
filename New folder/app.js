@@ -859,10 +859,7 @@ let waiters = [
     name: "PACKING",
     id: "1",
   },
-  {
-    name: "padam",
-    id: "2",
-  },
+
   {
     name: "Shaam",
     id: "3",
@@ -875,18 +872,12 @@ let waiters = [
     name: "VK",
     id: "5",
   },
-  {
-    name: "Kishan",
-    id: "6",
-  },
+
   {
     name: "Dheeraj",
     id: "7",
   },
-  {
-    name: "shaib",
-    id: "8",
-  },
+
   {
     name: "Pandari",
     id: "9",
