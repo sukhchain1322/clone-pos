@@ -856,35 +856,26 @@ let menu = [
 
 let waiters = [
   {
-    name: "PACKING",
+    name: "Pick-up",
     id: "1",
   },
 
   {
-    name: "Shaam",
+    name: "waiter-1",
     id: "3",
   },
   {
-    name: "Jassi",
+    name: "waiter-2",
     id: "4",
   },
   {
-    name: "VK",
+    name: "waiter-3",
     id: "5",
   },
 
   {
-    name: "Dheeraj",
+    name: "waiter-4",
     id: "7",
-  },
-
-  {
-    name: "Pandari",
-    id: "9",
-  },
-  {
-    name: "Surjit",
-    id: "10",
   },
 ];
 
@@ -1778,7 +1769,7 @@ function Printpaidbill() {
 
 function generateReceiptContent(paidBill) {
   const tableNumber = paidBill.tableId;
-  let receiptContent = "<h1>Babe da dhaba - Table " + tableNumber + "</h1>";
+  let receiptContent = "<h1>Indian Restaurant - Table " + tableNumber + "</h1>";
   receiptContent += "<ul>";
 
   // Loop through the items in the paidBill and add them to the receipt content
@@ -1896,7 +1887,7 @@ function printKOT() {
   const activeTable = selectedTable;
   const tableNumber = activeTable.replace("table", "");
   let receiptContent = `
-  <h1 style="text-align: center; ">Babe da dhaba</h1>
+  <h1 style="text-align: center; ">Indian Restaurant</h1>
   <h2 style="text-align: center; ">Table ${tableNumber} - ${tables[selectedTable].waiter}</h2>
   <hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">
   <ul style="list-style: none; padding: 0; margin: 0; text-align: center; font-size:30px;">
@@ -1983,7 +1974,7 @@ function printReceipt() {
   tables[activeTable].finalorder.push(...itemsToMove);
   const tableNumber = activeTable.replace("table", "");
   let receiptContent = `
-    <h1 style="text-align: center; ">Babe da dhaba</h1>
+    <h1 style="text-align: center; ">Indian Restaurant</h1>
     <h2 style="text-align: center; ">Table ${tableNumber}</h2>
     <hr style="border: none; border-bottom: 1px solid #eee; margin: 10px 0;">
     <ul style="list-style: none; padding: 0; margin: 0;">
@@ -2076,7 +2067,7 @@ function printTotalSale() {
   let sum = 0;
   let count = 1;
   let output =
-    "<h1> BABE DA DHABA SALE </h1>" + "<br>" + "ALL BILLS: " + "<br>" + "<br>";
+    "<h1> Indian Restaurant SALE </h1>" + "<br>" + "ALL BILLS: " + "<br>" + "<br>";
   for (const total of allTotals) {
     output += `bill  ${count}:  ` + total + "<br>";
     sum += total;
