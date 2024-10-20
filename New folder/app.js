@@ -1,858 +1,96 @@
 let menu = [
-  {
-    name: "shahi paneer",
-    id: "1",
-    price: 220,
-    img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    category: "Veg",
-  },
-  {
-    name: "kadahi paneer",
-    id: "2",
-    price: 240,
-    img: "https://images.unsplash.com/photo-1551881192-002e02ad3d87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    category: "Veg",
-  },
-  {
-    name: "Dal makhni",
-    id: "3",
-    price: 150,
-    img: "https://myfoodstory.com/wp-content/uploads/2018/08/Dal-Makhani-New-1.jpg",
-    category: "Veg",
-  },
-  {
-    name: "saag",
-    id: "4",
-    price: 150,
-    img: "https://www.florenceindianrestaurant.it/wp-content/uploads/2022/08/kanwardeep-kaur-jTv_cWxEtFs-unsplash-1110x739.jpg",
-    category: "Veg",
-  },
-  {
-    name: "dal fry",
-    id: "5",
-    price: 120,
-    img: "https://www.cookwithmanali.com/wp-content/uploads/2019/07/Dal-Fry-Recipe.jpg",
-    category: "Veg",
-  },
-  {
-    name: "yellow dal",
-    id: "6",
-    price: 150,
-    img: "https://cdn.vegetariantimes.com/wp-content/uploads/2017/05/dal1_2000_1125.jpg?crop=535:301&width=1070&enable=upscale",
-    category: "Veg",
-  },
-  {
-    name: "channa masala",
-    id: "7",
-    price: 180,
-    img: "https://minimalistbaker.com/wp-content/uploads/2016/02/AMAZING-Chana-Masala-made-in-1-Pot-So-healthy-flavorful-and-delicious-vegan-glutenfree-chanamasala-recipe-minimalistbaker.jpg",
-    category: "Veg",
-  },
-  {
-    name: "mutter paneer",
-    id: "8",
-    price: 190,
-    img: "https://pipingpotcurry.com/wp-content/uploads/2022/04/Matar-Paneer-Best-Indian-Paneer-Recipe-Piping-Pot-Curry.webp",
-    category: "Veg",
-  },
-  {
-    name: "paneer butter masala",
-    id: "9",
-    price: 220,
-    img: "https://j6e2i8c9.rocketcdn.me/wp-content/uploads/2020/12/Paneer-butter-masala-recipe-3.jpg",
-    category: "Veg",
-  },
-  {
-    name: "paneer bhurji",
-    id: "10",
-    price: 250,
-    img: "https://www.whiskaffair.com/wp-content/uploads/2021/04/Paneer-Bhurji-2-1-1.jpg",
-    category: "Veg",
-  },
-  {
-    name: "palak paneer",
-    id: "11",
-    price: 200,
-    img: "https://healthynibblesandbits.com/wp-content/uploads/2020/01/Saag-Paneer-1.jpg",
-    category: "Veg",
-  },
-  {
-    name: "malai kofta",
-    id: "12",
-    price: 200,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/malai-kofta-1-1024x1536.jpg",
-    category: "Veg",
-  },
-  {
-    name: "mutter mushroom",
-    id: "13",
-    price: 200,
-    img: "https://shwetainthekitchen.com/wp-content/uploads/2023/03/mutter-mushroom.jpg",
-    category: "Veg",
-  },
-  {
-    name: "sev bhaji",
-    id: "14",
-    price: 150,
-    img: "",
-    category: "Veg",
-  },
-  {
-    name: "alloo mutter",
-    id: "15",
-    price: 130,
-    img: "https://masalachilli.com/wp-content/uploads/2022/07/Aloo-matar-recipe-7.jpg",
-    category: "Veg",
-  },
-  {
-    name: "allo zeera",
-    id: "16",
-    price: 130,
-    img: "https://www.cubesnjuliennes.com/wp-content/uploads/2021/02/Jeera-Aloo-1.jpg",
-    category: "Veg",
-  },
-  {
-    name: "mutter malai methi",
-    id: "17",
-    price: 180,
-    img: "",
-    category: "Veg",
-  },
-  {
-    name: "mix veg",
-    id: "18",
-    price: 180,
-    img: "https://shwetainthekitchen.com/wp-content/uploads/2023/03/mixed-vegetable-curry.jpg",
-    category: "Veg",
-  },
-  {
-    name: "allo gobi",
-    id: "19",
-    price: 150,
-    img: "https://www.spiceupthecurry.com/wp-content/uploads/2021/06/aloo-gobi-3.jpg",
-    category: "Veg",
-  },
-  {
-    name: "cheese tomato",
-    id: "20",
-    price: 200,
-    img: "https://www.thecookierookie.com/wp-content/uploads/2023/08/baked-tomatoes-mozzarella-parmesan-5-of-6-edited.jpg",
-    category: "Veg",
-  },
+    { "id": "1", "name": "Spl. Milk Tea", "category": "beverages", "price": 20 },
+    { "id": "2", "name": "Hot Milk", "category": "beverages", "price": 20 },
+    { "id": "3", "name": "Hot Coffee", "category": "beverages", "price": 70 },
+    { "id": "4", "name": "Sweet Lassi", "category": "beverages", "price": 70 },
+    { "id": "5", "name": "Cold Drinks", "category": "beverages", "price": "As Per Price" },
+    
+    { "id": "10", "name": "Plain Parantha", "category": "parantha", "price": 50 },
+    { "id": "11", "name": "Aloo Parantha", "category": "parantha", "price": 50 },
+    { "id": "12", "name": "Mix Parantha", "category": "parantha", "price": 60 },
+    { "id": "13", "name": "Gobi Parantha", "category": "parantha", "price": 50 },
+    { "id": "14", "name": "Paneer Parantha", "category": "parantha", "price": 70 },
+    { "id": "15", "name": "Onion Parantha", "category": "parantha", "price": 50 },
+    { "id": "16", "name": "Plain Salad", "category": "parantha", "price": 50 },
+    { "id": "17", "name": "Green Salad", "category": "parantha", "price": 50 },
+    { "id": "18", "name": "Dahi", "category": "parantha", "price": "50/100" },
+    { "id": "19", "name": "Mix Raita", "category": "parantha", "price": 150 },
 
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "spl. milk tea",
-    id: "21",
-    price: 20,
-    img: "https://www.justonecookbook.com/wp-content/uploads/2020/04/Royal-Milk-Tea-4740-IV.jpg",
-    category: "beverages",
-  },
-  {
-    name: "hot coffee",
-    id: "22",
-    price: 50,
-    img: "https://www.acouplecooks.com/wp-content/uploads/2021/05/Latte-Art-066.jpg",
-    category: "beverages",
-  },
-  {
-    name: "hot milk",
-    id: "23",
-    price: 30,
-    img: "https://www.thespruceeats.com/thmb/GyKAhZtvjyfOtjm3sVlPtpKVbcQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/milk-kefir-recipe-5218990-c-graham-2022-003-b3e9b05efc19436a8fde302f9f70efb5.jpg",
-    category: "beverages",
-  },
-  {
-    name: "sweet lassi",
-    id: "24",
-    price: 50,
-    img: "https://www.indianveggiedelight.com/wp-content/uploads/2023/01/sweet-lassi-recipe.jpg",
-    category: "beverages",
-  },
-
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "plain parantha",
-    id: "25",
-    price: 40,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2010/06/plain-paratha-recipe.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "allo parantha",
-    id: "26",
-    price: 50,
-    img: "https://www.veganricha.com/wp-content/uploads/2023/03/Aloo-Paratha-7109.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "gobi parantha",
-    id: "27",
-    price: 50,
-    img: "https://www.jainrasoi.com/mg/wp-content/uploads/2012/10/gobi-paratha-600x381.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "mix parantha",
-    id: "28",
-    price: 60,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2014/12/vegetable-paratha-recipe.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "paneer parantha",
-    id: "29",
-    price: 70,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/06/paneer-paratha-1-1024x1536.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "onion parantha",
-    id: "30",
-    price: 50,
-    img: "",
-    category: "breakfast",
-  },
-
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "plain salad",
-    id: "31",
-    price: 30,
-    img: "https://www.acouplecooks.com/wp-content/uploads/2019/05/Chopped-Salad-001_1.jpg",
-    category: "salad",
-  },
-  {
-    name: "green salad",
-    id: "32",
-    price: 50,
-    img: "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chopped-green-salad-with-herby-chilli-dressing-429ab82.jpg?quality=90&webp=true&resize=300,272",
-    category: "salad",
-  },
-  {
-    name: "full dahi",
-    id: "33",
-    price: 80,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/curd-recipe.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "mix raita",
-    id: "34",
-    price: 120,
-    img: "https://www.merirasoi.co.uk/wp-content/uploads/2018/07/mixed-vegetable-raita-Hero-Shot-1.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "bundi raita",
-    id: "35",
-    price: 100,
-    img: "https://www.indianveggiedelight.com/wp-content/uploads/2020/11/boondi-raita.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "full cream salad",
-    id: "36",
-    price: 100,
-    img: "http://www.pakistanichefrecipes.com/wp-content/uploads/2018/07/Vegetable-Cream-Salad.jpg",
-    category: "salad",
-  },
-
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "cheese chilly",
-    id: "37",
-    price: 250,
-    img: "https://hebbarskitchen.com/wp-content/uploads/2020/01/chilli-paneer-recipe-paneer-chilli-dry-how-to-make-cheese-chilli-2-682x1024.jpeg",
-    category: "snacks",
-  },
-  {
-    name: "paneer tikka",
-    id: "38",
-    price: 250,
-    img: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/Neha_Mathur/Achari_Paneer_Tikka_Recipe_Party_Food.JPG",
-    category: "snacks",
-  },
-  {
-    name: "finger chips",
-    id: "39",
-    price: 120,
-    img: "https://masalachilli.com/wp-content/uploads/2021/04/Air-Fryer-French-Fries-2.jpg",
-    category: "snacks",
-  },
-  {
-    name: "penunt masala",
-    id: "40",
-    price: 80,
-    img: "https://rakskitchen.net/wp-content/uploads/2021/07/crispy-masala-peanut-snack.jpg",
-    category: "snacks",
-  },
-  {
-    name: "mix pakoda",
-    id: "41",
-    price: 150,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2016/09/mix-veg-pakora-recipe.jpg",
-    category: "snacks",
-  },
-  {
-    name: "gobi pakoda",
-    id: "42",
-    price: 150,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/gobi-pakora-recipe.jpg",
-    category: "snacks",
-  },
-  {
-    name: "paneer pakoda",
-    id: "43",
-    price: 170,
-    img: "https://pipingpotcurry.com/wp-content/uploads/2022/10/Stuffed-Paneer-Pakora-Recipe-Piping-Pot-Curry.webp",
-    category: "snacks",
-  },
-  {
-    name: "mushroom chilly",
-    id: "44",
-    price: 250,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/10/chilli-mushroom-1-1024x1536.jpg",
-    category: "snacks",
-  },
-  {
-    name: "manchurian",
-    id: "45",
-    price: 170,
-    img: "https://www.indianveggiedelight.com/wp-content/uploads/2021/07/gobi-manchurian-1.jpg",
-    category: "snacks",
-  },
-  {
-    name: "egg omelette (2 egg)",
-    id: "46",
-    price: 40,
-    img: "https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_center,w_730,h_913/k%2FPhoto%2FSeries%2F2022-07-How-To-Make-an-Omelet-Step-by-Step%2F2022_July_K_EDR_OMELET_31904",
-    category: "snacks",
-  },
-  {
-    name: "egg bhurji (2 egg)",
-    id: "47",
-    price: 40,
-    img: "https://www.theloveofspice.com/wp-content/uploads/2022/03/egg-bhurji.jpg",
-    category: "snacks",
-  },
-  {
-    name: "chicken tikka",
-    id: "48",
-    price: 450,
-    img: "https://glebekitchen.com/wp-content/uploads/2016/12/chickentikkakebab.jpg",
-    category: "snacks",
-  },
-  {
-    name: "fish tikka",
-    id: "49",
-    price: 350,
-    img: "https://spicecravings.com/wp-content/uploads/2019/08/Fish-Tikka-3.jpg",
-    category: "snacks",
-  },
-
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "plain thali (dal + 5 roti)",
-    id: "50",
-    price: 120,
-    img: "https://www.mapsofindia.com/ci-moi-images/my-india/Daal-Roti.jpg",
-    category: "combo meal",
-  },
-  {
-    name: "special thali (dal + sabzi+ dahi + 4 roti)",
-    id: "51",
-    price: 200,
-    img: "https://scontent.fvbs2-2.fna.fbcdn.net/v/t39.30808-6/291218833_5692542034112735_2617211113675891136_n.jpg?stp=cp0_dst-jpg_e15_p240x240_q65&_nc_cat=104&ccb=1-7&_nc_sid=3fb9c2&_nc_ohc=lbyVLirWEOEAX_Ub6zV&_nc_ht=scontent.fvbs2-2.fna&oh=00_AfAPwuk1zUkK1zXGqnkgDAtkTdIinAEpEX4XJ0i2xK-Ctg&oe=65077010",
-    category: "combo meal",
-  },
-
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "butter chicken",
-    id: "52",
-    price: 500,
-    img: "https://as1.ftcdn.net/v2/jpg/01/42/27/16/1000_F_142271660_UxH5v5ibDYrqI5Hj7F6UdOD0MnMHuDjF.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "kadhai chicken",
-    id: "53",
-    price: 500,
-    img: "https://as2.ftcdn.net/v2/jpg/00/36/35/19/1000_F_36351924_Gxxt8uJgc5COMoG0aSCkzotTH775KweR.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "afghani chicken",
-    id: "54",
-    price: 500,
-    img: "https://as1.ftcdn.net/v2/jpg/06/26/94/64/1000_F_626946495_NzraG61EtU16DJvOKpIz6lWoIDOz1Y7p.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "chicken fry",
-    id: "55",
-    price: 500,
-    img: "https://as1.ftcdn.net/v2/jpg/06/11/49/94/1000_F_611499456_9LHFNzaiGOPU0cMTAiRsmBmtgNsNb0bY.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half butter chicken",
-    id: "56",
-    price: 280,
-    img: "https://as1.ftcdn.net/v2/jpg/01/42/27/16/1000_F_142271660_UxH5v5ibDYrqI5Hj7F6UdOD0MnMHuDjF.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "half kadhai chicken",
-    id: "57",
-    price: 280,
-    img: "https://as2.ftcdn.net/v2/jpg/00/36/35/19/1000_F_36351924_Gxxt8uJgc5COMoG0aSCkzotTH775KweR.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "half afghani chicken",
-    id: "58",
-    price: 280,
-    img: "https://as1.ftcdn.net/v2/jpg/06/26/94/64/1000_F_626946495_NzraG61EtU16DJvOKpIz6lWoIDOz1Y7p.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "half chicken fry",
-    id: "59",
-    price: 280,
-    img: "https://as1.ftcdn.net/v2/jpg/06/11/49/94/1000_F_611499456_9LHFNzaiGOPU0cMTAiRsmBmtgNsNb0bY.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "mutton",
-    id: "60",
-    price: 550,
-    img: "https://as2.ftcdn.net/v2/jpg/02/77/64/23/1000_F_277642354_iC1BD0n5e6E7RWXh3aSLDgg0LbidJSQs.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half mutton",
-    id: "61",
-    price: 300,
-    img: "https://as2.ftcdn.net/v2/jpg/02/77/64/23/1000_F_277642354_iC1BD0n5e6E7RWXh3aSLDgg0LbidJSQs.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "chicken pakoda",
-    id: "62",
-    price: 500,
-    img: "https://as1.ftcdn.net/v2/jpg/02/38/91/18/1000_F_238911802_gdcVYA3NIkQPYBXGPVYt5fkOOrXFqF6N.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half chicken pakoda",
-    id: "63",
-    price: 280,
-    img: "https://as1.ftcdn.net/v2/jpg/02/38/91/18/1000_F_238911802_gdcVYA3NIkQPYBXGPVYt5fkOOrXFqF6N.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "boneless chicken",
-    id: "64",
-    price: 550,
-    img: "https://as1.ftcdn.net/v2/jpg/00/81/20/42/1000_F_81204229_RwuwL0GDMhknV184jMljRZ65V0z4Lzzd.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half boneless chicken",
-    id: "65",
-    price: 300,
-    img: "https://as1.ftcdn.net/v2/jpg/00/81/20/42/1000_F_81204229_RwuwL0GDMhknV184jMljRZ65V0z4Lzzd.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "fish plate (8 pc)",
-    id: "66",
-    price: 350,
-    img: "https://as2.ftcdn.net/v2/jpg/01/02/12/37/1000_F_102123736_3UnlYznkHU28jjQiEQU9iaERIPvNNyNG.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "chilly chicken",
-    id: "67",
-    price: 500,
-    img: "https://as1.ftcdn.net/v2/jpg/02/65/27/24/1000_F_265272460_90zgCzgJioY0FgL97KAOjinGhCP3Aw09.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half chilly chicken",
-    id: "68",
-    price: 280,
-    img: "https://as1.ftcdn.net/v2/jpg/02/65/27/24/1000_F_265272460_90zgCzgJioY0FgL97KAOjinGhCP3Aw09.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "masala chicken",
-    id: "69",
-    price: 500,
-    img: "https://bellyfull.net/wp-content/uploads/2021/05/Chicken-Tikka-Masala-blog-768x1024.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half masala chicken",
-    id: "70",
-    price: 280,
-    img: "https://bellyfull.net/wp-content/uploads/2021/05/Chicken-Tikka-Masala-blog-768x1024.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "chicken biryani",
-    id: "71",
-    price: 280,
-    img: "https://pipingpotcurry.com/wp-content/uploads/2017/05/Instant-Pot-Chicken-Biryani-Piping-Pot-Curry-1-2.webp",
-    category: "Non Veg",
-  },
-  {
-    name: "tandoori chicken",
-    id: "72",
-    price: 500,
-    img: "https://thebigmansworld.com/wp-content/uploads/2022/11/tandoori-chicken-800x1200.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half tandoori chicken",
-    id: "73",
-    price: 280,
-    img: "https://thebigmansworld.com/wp-content/uploads/2022/11/tandoori-chicken-800x1200.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "garlic chicken",
-    id: "74",
-    price: 520,
-    img: "https://www.lordbyronskitchen.com/wp-content/uploads/2022/02/Fried-Garlic-Chicken-b-532x800.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half garlic chicken",
-    id: "75",
-    price: 300,
-    img: "https://www.lordbyronskitchen.com/wp-content/uploads/2022/02/Fried-Garlic-Chicken-b-532x800.jpg",
-    category: "Non Veg (half plate)",
-  },
-  {
-    name: "lemon chicken",
-    id: "76",
-    price: 550,
-    img: "https://therecipecritic.com/wp-content/uploads/2023/07/chinese_lemon_chicken-1-640x853.jpg",
-    category: "Non Veg",
-  },
-  {
-    name: "half lemon chicken",
-    id: "77",
-    price: 300,
-    img: "https://therecipecritic.com/wp-content/uploads/2023/07/chinese_lemon_chicken-1-640x853.jpg",
-    category: "Non Veg (half plate)",
-  },
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "plain roti",
-    id: "90",
-    price: 12,
-    img: "https://cdn.mos.cms.futurecdn.net/z9yrzoMFd7hcFnvjzNjv5P-1024-80.jpg.webp",
-    category: "roti & naan",
-  },
-  {
-    name: "butter roti",
-    id: "78",
-    price: 15,
-    img: "https://www.cookwithmanali.com/wp-content/uploads/2021/07/Tandoori-Roti-676x1024.jpg",
-    category: "roti & naan",
-  },
-  {
-    name: "laccha paratha",
-    id: "79",
-    price: 40,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2010/06/lachha-paratha-recipe.jpg",
-    category: "breakfast",
-  },
-  {
-    name: "plain naan",
-    id: "80",
-    price: 40,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2013/07/naan-1.jpg",
-    category: "roti & naan",
-  },
-  {
-    name: "butter naan",
-    id: "81",
-    price: 50,
-    img: "https://foodess.com/wp-content/uploads/2023/02/Butter-Naan-2-819x1024.jpg.webp",
-    category: "roti & naan",
-  },
-  {
-    name: "makki di roti",
-    id: "82",
-    price: 25,
-    img: "https://i0.wp.com/www.simpleglutenfreekitchen.com/wp-content/uploads/2020/01/makki-ki-roti-1.jpg?resize=606%2C800&ssl=1",
-    category: "roti & naan",
-  },
-  {
-    name: "missi roti",
-    id: "83",
-    price: 30,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2016/01/missi-roti-recipe.jpg",
-    category: "roti & naan",
-  },
-  {
-    name: "garlic naan",
-    id: "84",
-    price: 60,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2022/12/garlic-naan-1-1024x1536.jpg",
-    category: "roti & naan",
-  },
-  ///////////////////////////////////////////////////////////////////////
-  {
-    name: "plain rice",
-    id: "85",
-    price: 80,
-    img: "https://bigoven-res.cloudinary.com/image/upload/h_320,w_320,c_fill/plain-white-rice-f7391e.jpg",
-    category: "Other",
-  },
-  {
-    name: "zeera rice",
-    id: "86",
-    price: 120,
-    img: "https://www.whiskaffair.com/wp-content/uploads/2021/06/Jeera-Rice-2-1-1.jpg",
-    category: "Other",
-  },
-  {
-    name: "veg fried rice",
-    id: "87",
-    price: 150,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2020/12/fried-rice-recipe-1152x1536.jpg",
-    category: "Other",
-  },
-  {
-    name: "paneer fried rice",
-    id: "88",
-    price: 170,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2015/09/paneer-fried-rice-recipe.jpg",
-    category: "Other",
-  },
-  {
-    name: "veg biryani",
-    id: "89",
-    price: 170,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/biryani-recipe-1-1024x1536.jpg",
-    category: "Other",
-  },
-  {
-    name: "Mutter Pulao",
-    id: "91",
-    price: 150,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "half dahi",
-    id: "92",
-    price: 40,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2012/05/curd-recipe.jpg",
-    category: "Other",
-  },
-  {
-    name: "half cream salad",
-    id: "93",
-    price: 50,
-    img: "http://www.pakistanichefrecipes.com/wp-content/uploads/2018/07/Vegetable-Cream-Salad.jpg",
-    category: "Other",
-  },
-  {
-    name: "extra butter",
-    id: "94",
-    price: 10,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Water",
-    id: "95",
-    price: 20,
-    img: "",
-    category: "Other",
-  },
-
-  //////////////////////////////  new items ////////////////////////
-  {
-    name: "Soda",
-    id: "96",
-    price: 20,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "chicken gravy",
-    id: "97",
-    price: 150,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "veg gravy",
-    id: "98",
-    price: 120,
-    img: "",
-    category: "Other",
-  },
-
-  {
-    name: "punjabi chicken",
-    id: "99",
-    price: 500,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "half punjabi chicken",
-    id: "100",
-    price: 280,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "steam chicken",
-    id: "101",
-    price: 500,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "half steam chicken",
-    id: "102",
-    price: 280,
-    img: "",
-    category: "Other",
-  },
-
-  {
-    name: "ITEM 10",
-    id: "103",
-    price: 10,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "ITEM 20",
-    id: "104",
-    price: 20,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "ITEM 40",
-    id: "105",
-    price: 40,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "ITEM 95",
-    id: "106",
-    price: 95,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Gudd vali chaah",
-    id: "107",
-    price: 25,
-    img: "",
-    category: "Other",
-  },
-
-  {
-    name: "Rajma",
-    id: "108",
-    price: 150,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Masala papd",
-    id: "109",
-    price: 50,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "plane papad",
-    id: "110",
-    price: 20,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Mutter methi",
-    id: "111",
-    price: 180,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Mushroom masala",
-    id: "112",
-    price: 220,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "Rara chicken",
-    id: "113",
-    price: 500,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "half Rara chicken",
-    id: "114",
-    price: 280,
-    img: "",
-    category: "Other",
-  },
-
-  {
-    name: "half ice",
-    id: "115",
-    price: 30,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "ice",
-    id: "116",
-    price: 50,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "chana bhatura",
-    id: "117",
-    price: 150,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "masala chicken",
-    id: "118",
-    price: 500,
-    img: "",
-    category: "Other",
-  },
-  {
-    name: "half masala chicken",
-    id: "119",
-    price: 280,
-    img: "",
-    category: "Other",
-  },
-];
+    { "id": "20", "name": "Dal Fry", "category": "veggies", "price": 150 },
+    { "id": "21", "name": "Dal Makhni", "category": "veggies", "price": 200 },
+    { "id": "22", "name": "Yellow Dal Fry", "category": "veggies", "price": 200 },
+    { "id": "23", "name": "Mix Veg.", "category": "veggies", "price": 200 },
+    { "id": "24", "name": "Aloo Zeera", "category": "veggies", "price": 180 },
+    { "id": "25", "name": "Aloo Mutter", "category": "veggies", "price": 170 },
+    { "id": "26", "name": "Malai Kofta", "category": "veggies", "price": 250 },
+    { "id": "27", "name": "Cheese Tomato", "category": "veggies", "price": 250 },
+    { "id": "28", "name": "Mutter Paneer", "category": "veggies", "price": 200 },
+    { "id": "29", "name": "Shahi Paneer", "category": "veggies", "price": 250 },
+    
+    { "id": "30", "name": "Plain Roti", "category": "Roti", "price": 15 },
+    { "id": "31", "name": "Butter Roti", "category": "Roti", "price": 20 },
+    { "id": "32", "name": "Laccha Paratha", "category": "Roti", "price": 40 },
+    { "id": "33", "name": "Plain Naan", "category": "Roti", "price": 50 },
+    { "id": "34", "name": "Butter Naan", "category": "Roti", "price": 60 },
+    { "id": "35", "name": "Makki Di Roti", "category": "Roti", "price": 30 },
+    { "id": "36", "name": "Missi Roti", "category": "Roti", "price": 40 },
+    { "id": "37", "name": "Garlic Naan", "category": "Roti", "price": 70 },
+    { "id": "38", "name": "Papad", "category": "Roti", "price": 20 },
+    { "id": "39", "name": "Masala Papad", "category": "Roti", "price": 70 },
+    
+    { "id": "40", "name": "Plain Rice", "category": "sides", "price": 100 },
+    { "id": "41", "name": "Zeera Rice", "category": "sides", "price": 150 },
+    { "id": "42", "name": "Veg. Fried Rice", "category": "sides", "price": 150 },
+    { "id": "43", "name": "Paneer Fried Rice", "category": "sides", "price": 170 },
+    { "id": "44", "name": "Veg Biryani", "category": "sides", "price": 150 },
+    { "id": "45", "name": "Mutter Pulao", "category": "sides", "price": 150 },
+    
+    { "id": "50", "name": "Mutton", "category": "chicken", "price": 600 },
+    { "id": "51", "name": "Punjabi Chicken", "category": "chicken", "price": 550 },
+    { "id": "52", "name": "Butter Chicken", "category": "chicken", "price": 550 },
+    { "id": "53", "name": "Kadai Chicken", "category": "chicken", "price": 550 },
+    { "id": "54", "name": "Afghani Chicken", "category": "chicken", "price": 550 },
+    { "id": "55", "name": "Chicken Fry", "category": "chicken", "price": 550 },
+    { "id": "56", "name": "Half Butter Chicken", "category": "chicken", "price": 350 },
+    { "id": "57", "name": "Half Kadai Chicken", "category": "chicken", "price": 350 },
+    { "id": "58", "name": "Half Afghani Chicken", "category": "chicken", "price": 350 },
+    { "id": "59", "name": "Half Chicken Fry", "category": "chicken", "price": 350 },
+    
+    { "id": "60", "name": "Chicken Pakoda", "category": "chicken", "price": 550 },
+    { "id": "61", "name": "Half Chicken Pakoda", "category": "chicken", "price": 350 },
+    { "id": "62", "name": "Boneless Chicken", "category": "chicken", "price": 550 },
+    { "id": "63", "name": "Half Boneless Chicken", "category": "chicken", "price": 350 },
+    { "id": "64", "name": "Fish Plate (8 pc)", "category": "chicken", "price": 400 },
+    { "id": "65", "name": "Steam Chicken", "category": "chicken", "price": 550 },
+    { "id": "66", "name": "Chilly Chicken", "category": "chicken", "price": 550 },
+    { "id": "67", "name": "Masala Chicken", "category": "chicken", "price": 550 },
+    { "id": "68", "name": "Chicken Biryani", "category": "chicken", "price": 300 },
+    { "id": "69", "name": "Tandoori Chicken", "category": "chicken", "price": "350/550" },
+    
+    { "id": "70", "name": "Garlic Chicken", "category": "chicken", "price": 550 },
+    { "id": "71", "name": "Rara Chicken", "category": "chicken", "price": 600 },
+    
+    { "id": "80", "name": "veg biryani", "category": "Other", "price": 170 },
+    { "id": "81", "name": "Mutter Pulao", "category": "Other", "price": 150 },
+    { "id": "82", "name": "half dahi", "category": "Other", "price": 40 },
+    { "id": "83", "name": "half cream salad", "category": "Other", "price": 50 },
+    { "id": "84", "name": "extra butter", "category": "Other", "price": 10 },
+    { "id": "85", "name": "Water", "category": "Other", "price": 20 },
+    { "id": "86", "name": "Soda", "category": "Other", "price": 20 },
+    { "id": "87", "name": "chicken gravy", "category": "Other", "price": 150 },
+    { "id": "88", "name": "veg gravy", "category": "Other", "price": 120 },
+    
+    { "id": "90", "name": "ITEM 10", "category": "Other", "price": 10 },
+    { "id": "91", "name": "ITEM 20", "category": "Other", "price": 20 },
+    { "id": "92", "name": "ITEM 40", "category": "Other", "price": 40 },
+    { "id": "93", "name": "ITEM 95", "category": "Other", "price": 95 },
+    { "id": "94", "name": "Gudd vali chaah", "category": "Other", "price": 25 },
+    { "id": "95", "name": "Masala papd", "category": "Other", "price": 50 },
+    { "id": "96", "name": "plane papad", "category": "Other", "price": 20 },
+    { "id": "97", "name": "Mutter methi", "category": "Other", "price": 180 },
+    { "id": "98", "name": "half ice", "category": "Other", "price": 30 }
+]
+;
 
 let waiters = [
   {
@@ -1258,7 +496,7 @@ function showMenu(category) {
 function veggies() {
   ///////////////////////////////////// loop 1
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 19; i < 28; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1279,7 +517,7 @@ function veggies() {
 function beverages() {
   /////////////////// loop 2
 
-  for (let i = 20; i < 30; i++) {
+  for (let i = 0; i < 4; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1299,7 +537,7 @@ function beverages() {
 
 function parantha() {
   ////////////// loop 3
-  for (let i = 114; i < menu.length; i++) {
+  for (let i = 9; i < 18; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1339,7 +577,7 @@ function parantha() {
 
 function sides() {
   /////////// loop 4
-  for (let i = 30; i < 51; i++) {
+  for (let i = 39; i < 44; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1359,7 +597,7 @@ function sides() {
 
 function chicken() {
   /////////// loop 5
-  for (let i = 51; i < 77; i++) {
+  for (let i = 49; i < 70; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1379,7 +617,7 @@ function chicken() {
 
 function Roti() {
   /////////// loop 6
-  for (let i = 77; i < 85; i++) {
+  for (let i = 29; i < 38; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
@@ -1399,7 +637,7 @@ function Roti() {
 
 function Other() {
   /////////// loop 7
-  for (let i = 85; i < 114; i++) {
+  for (let i = 79; i < 97; i++) {
     const item = menu[i];
 
     let div = document.createElement("div");
